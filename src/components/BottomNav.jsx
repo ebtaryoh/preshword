@@ -18,7 +18,7 @@ export default function BottomNav({
             onTabChange('home');
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
-          className={`flex flex-col items-center justify-center gap-1 transition-colors ${
+          className={`flex flex-col items-center justify-center gap-1 transition-colors cursor-pointer ${
             activeTab === 'home' ? 'text-[#E04F16]' : 'text-zinc-500 hover:text-[#141312]'
           }`}
         >
@@ -26,40 +26,40 @@ export default function BottomNav({
           <span className="text-[10px] font-bold tracking-tight">Home</span>
         </button>
 
-        {/* 2. Cookware */}
+        {/* 2. Kitchen Wares */}
         <button
           onClick={() => {
             onTabChange('cookware');
             const el = document.getElementById('shop-catalog');
             if (el) el.scrollIntoView({ behavior: 'smooth' });
           }}
-          className={`flex flex-col items-center justify-center gap-1 transition-colors ${
+          className={`flex flex-col items-center justify-center gap-1 transition-colors cursor-pointer ${
             activeTab === 'cookware' ? 'text-[#E04F16]' : 'text-zinc-500 hover:text-[#141312]'
           }`}
         >
           <UtensilsCrossed className="w-5 h-5 stroke-[2.2]" />
-          <span className="text-[10px] font-bold tracking-tight">Cookware</span>
+          <span className="text-[10px] font-bold tracking-tight">Kitchen</span>
         </button>
 
-        {/* 3. Market / Catalog */}
+        {/* 3. Catalog / All */}
         <button
           onClick={() => {
             onTabChange('all');
             const el = document.getElementById('shop-catalog');
             if (el) el.scrollIntoView({ behavior: 'smooth' });
           }}
-          className={`flex flex-col items-center justify-center gap-1 transition-colors ${
+          className={`flex flex-col items-center justify-center gap-1 transition-colors cursor-pointer ${
             activeTab === 'all' ? 'text-[#E04F16]' : 'text-zinc-500 hover:text-[#141312]'
           }`}
         >
           <ShoppingBag className="w-5 h-5 stroke-[2.2]" />
-          <span className="text-[10px] font-bold tracking-tight">Market</span>
+          <span className="text-[10px] font-bold tracking-tight">Catalog</span>
         </button>
 
         {/* 4. Cart */}
         <button
           onClick={onOpenCart}
-          className="relative flex flex-col items-center justify-center gap-1 text-zinc-500 hover:text-[#E04F16] transition-colors"
+          className="relative flex flex-col items-center justify-center gap-1 text-zinc-500 hover:text-[#E04F16] transition-colors cursor-pointer"
         >
           <div className="relative">
             <ShoppingCart className="w-5 h-5 stroke-[2.2]" />
@@ -75,7 +75,7 @@ export default function BottomNav({
         {/* 5. Wishlist */}
         <button
           onClick={onOpenWishlist}
-          className="relative flex flex-col items-center justify-center gap-1 text-zinc-500 hover:text-[#E04F16] transition-colors"
+          className="relative flex flex-col items-center justify-center gap-1 text-zinc-500 hover:text-[#E04F16] transition-colors cursor-pointer"
         >
           <div className="relative">
             <Heart className="w-5 h-5 stroke-[2.2]" />
@@ -91,4 +91,3 @@ export default function BottomNav({
     </nav>
   );
 }
-

@@ -1,10 +1,15 @@
 import React from 'react';
-import { ArrowUp, ShieldCheck, Truck, RefreshCw, Sparkles, MapPin } from 'lucide-react';
+import { ArrowUp, ShieldCheck, Truck, RefreshCw, Sparkles, MapPin, MessageCircle } from 'lucide-react';
+import { WHATSAPP_NUMBER, WHATSAPP_DISPLAY } from '../utils/whatsapp';
 
 export default function Footer({ onSelectCategory }) {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  const whatsappInquiryUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+    'Hello Preshword Living! 👋 I am interested in inquiring about placing an order or tracking my delivery.'
+  )}`;
 
   return (
     <footer className="bg-[#141312] text-white pt-16 pb-24 sm:pb-12 border-t border-white/10">
@@ -16,9 +21,9 @@ export default function Footer({ onSelectCategory }) {
               <Truck className="w-5 h-5" />
             </div>
             <div>
-              <h5 className="font-extrabold text-sm text-white">Same-Day Dispatch</h5>
+              <h5 className="font-extrabold text-sm text-white">Same-Day Lagos Dispatch</h5>
               <p className="text-xs text-zinc-400 mt-1 leading-relaxed">
-                Direct from our Lekki Phase 1 hub across Lagos & 48h express nationwide.
+                Direct rider dispatch from our Lekki Phase 1 hub across Lagos in 2–4 hours.
               </p>
             </div>
           </div>
@@ -28,9 +33,9 @@ export default function Footer({ onSelectCategory }) {
               <ShieldCheck className="w-5 h-5" />
             </div>
             <div>
-              <h5 className="font-extrabold text-sm text-white">Non-Toxic Guarantee</h5>
+              <h5 className="font-extrabold text-sm text-white">100% Non-Toxic & Safe</h5>
               <p className="text-xs text-zinc-400 mt-1 leading-relaxed">
-                100% free from PTFE, PFOA, lead, cadmium, and forever chemicals.
+                Sol-Gel ceramic zero PTFE/PFOA, and BPA-free food-grade silicone for children.
               </p>
             </div>
           </div>
@@ -40,9 +45,9 @@ export default function Footer({ onSelectCategory }) {
               <RefreshCw className="w-5 h-5" />
             </div>
             <div>
-              <h5 className="font-extrabold text-sm text-white">30-Day Kitchen Trial</h5>
+              <h5 className="font-extrabold text-sm text-white">Pay On Delivery (Lagos)</h5>
               <p className="text-xs text-zinc-400 mt-1 leading-relaxed">
-                Cook in your home with confidence. Effortless returns and exchanges.
+                Inspect your items first at your doorstep, then pay via bank transfer or cash.
               </p>
             </div>
           </div>
@@ -52,9 +57,9 @@ export default function Footer({ onSelectCategory }) {
               <Sparkles className="w-5 h-5" />
             </div>
             <div>
-              <h5 className="font-extrabold text-sm text-white">Lifetime Support</h5>
+              <h5 className="font-extrabold text-sm text-white">Official 2-Year Warranty</h5>
               <p className="text-xs text-zinc-400 mt-1 leading-relaxed">
-                Dedicated culinary care concierge via WhatsApp and direct hotline.
+                Complete warranty coverage on all commercial blenders, toasters, and cookware.
               </p>
             </div>
           </div>
@@ -70,13 +75,13 @@ export default function Footer({ onSelectCategory }) {
               </span>
             </div>
             <p className="mt-3 text-sm text-zinc-400 max-w-sm leading-relaxed">
-              Curated, non-toxic cookware and aesthetic tableware designed for modern Nigerian homes. Crafted for performance, styled for living.
+              Curated kitchen wares, small home appliances, luxury dining flatware, and safe children tableware for modern Nigerian households.
             </p>
             
             <div className="mt-6 flex flex-wrap items-center gap-3">
               <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/10 text-white font-mono text-xs">
-                <span className="w-2 h-2 rounded-full bg-[#E04F16] animate-ping" />
-                LAGOS HUB ONLINE
+                <span className="w-2 h-2 rounded-full bg-[#25D366] animate-ping" />
+                LEKKI DISPATCH HUB LIVE
               </span>
               <span className="text-xs text-zinc-400 font-mono flex items-center gap-1">
                 <MapPin className="w-3.5 h-3.5 text-[#E04F16]" /> Lekki Phase 1, Lagos
@@ -84,65 +89,121 @@ export default function Footer({ onSelectCategory }) {
             </div>
           </div>
 
-          {/* Col 1: Shop */}
+          {/* Col 1: Departments */}
           <div>
             <h4 className="font-mono text-xs font-bold uppercase tracking-wider text-[#E04F16] mb-4">
-              COLLECTIONS
+              DEPARTMENTS
             </h4>
             <ul className="space-y-2.5 text-sm text-zinc-400 font-medium">
               <li>
-                <button onClick={() => onSelectCategory('cookware')} className="hover:text-white transition-colors cursor-pointer">
-                  Mineral Cookware
+                <button
+                  onClick={() => {
+                    onSelectCategory('cookware');
+                    const el = document.getElementById('shop-catalog');
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="hover:text-white transition-colors cursor-pointer text-left"
+                >
+                  Kitchen Wares & Pots
                 </button>
               </li>
               <li>
-                <button onClick={() => onSelectCategory('appliances')} className="hover:text-white transition-colors cursor-pointer">
-                  Smart Appliances
+                <button
+                  onClick={() => {
+                    onSelectCategory('appliances');
+                    const el = document.getElementById('shop-catalog');
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="hover:text-white transition-colors cursor-pointer text-left"
+                >
+                  Blenders & Smart Toasters
                 </button>
               </li>
               <li>
-                <button onClick={() => onSelectCategory('tableware')} className="hover:text-white transition-colors cursor-pointer">
-                  Tableware & Dining
+                <button
+                  onClick={() => {
+                    onSelectCategory('utensils');
+                    const el = document.getElementById('shop-catalog');
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="hover:text-white transition-colors cursor-pointer text-left"
+                >
+                  24pc Luxury Cutlery
                 </button>
               </li>
               <li>
-                <button onClick={() => onSelectCategory('bakeware')} className="hover:text-white transition-colors cursor-pointer">
-                  Bakeware & Roasters
+                <button
+                  onClick={() => {
+                    onSelectCategory('kids');
+                    const el = document.getElementById('shop-catalog');
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="hover:text-white transition-colors cursor-pointer text-left"
+                >
+                  Children Wares & Feeding
                 </button>
               </li>
               <li>
-                <button onClick={() => onSelectCategory('cutlery')} className="hover:text-white transition-colors cursor-pointer">
-                  German Steel Knives
+                <button
+                  onClick={() => {
+                    onSelectCategory('tableware');
+                    const el = document.getElementById('shop-catalog');
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="hover:text-white transition-colors cursor-pointer text-left"
+                >
+                  Stoneware Tableware
                 </button>
               </li>
             </ul>
           </div>
 
-          {/* Col 2: Support */}
+          {/* Col 2: Client Care */}
           <div>
             <h4 className="font-mono text-xs font-bold uppercase tracking-wider text-[#E04F16] mb-4">
               CLIENT CARE
             </h4>
             <ul className="space-y-2.5 text-sm text-zinc-400 font-medium">
-              <li><a href="#" className="hover:text-white transition-colors">Lagos Same-Day Delivery</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Nationwide Shipping Rates</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Ceramic Care & Longevity</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Warranty & 30-Day Returns</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Track Your Order</a></li>
+              <li>
+                <a href={whatsappInquiryUrl} target="_blank" rel="noreferrer" className="hover:text-white transition-colors">
+                  Lagos Same-Day Delivery
+                </a>
+              </li>
+              <li>
+                <a href={whatsappInquiryUrl} target="_blank" rel="noreferrer" className="hover:text-white transition-colors">
+                  Pay On Delivery Terms
+                </a>
+              </li>
+              <li>
+                <a href={whatsappInquiryUrl} target="_blank" rel="noreferrer" className="hover:text-white transition-colors">
+                  Sol-Gel Care Instructions
+                </a>
+              </li>
+              <li>
+                <a href={whatsappInquiryUrl} target="_blank" rel="noreferrer" className="hover:text-white transition-colors">
+                  2-Year Appliance Warranty
+                </a>
+              </li>
+              <li>
+                <a href={whatsappInquiryUrl} target="_blank" rel="noreferrer" className="hover:text-white transition-colors flex items-center gap-1.5 text-[#25D366]">
+                  <MessageCircle className="w-3.5 h-3.5" />
+                  <span>WhatsApp: {WHATSAPP_DISPLAY}</span>
+                </a>
+              </li>
             </ul>
           </div>
 
-          {/* Col 3: Brand */}
+          {/* Col 3: Safe Quality */}
           <div>
             <h4 className="font-mono text-xs font-bold uppercase tracking-wider text-[#E04F16] mb-4">
-              THE HOUSE
+              QUALITY PROMISE
             </h4>
             <ul className="space-y-2.5 text-sm text-zinc-400 font-medium">
-              <li><a href="#" className="hover:text-white transition-colors">The Sol-Gel Story</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Material Testing Reports</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Hospitality & Wholesale</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Creator Collaborations</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">WhatsApp Concierge</a></li>
+              <li><span>Zero PTFE, PFOA, Lead</span></li>
+              <li><span>BPA-Free Food-Grade Silicone</span></li>
+              <li><span>18/10 Surgical Stainless Steel</span></li>
+              <li><span>Commercial Copper Cores</span></li>
+              <li><span>Lekki Hub Quality Inspected</span></li>
             </ul>
           </div>
         </div>
@@ -154,8 +215,7 @@ export default function Footer({ onSelectCategory }) {
           </div>
 
           <div className="flex items-center gap-6">
-            <a href="#" className="hover:text-white transition-colors">PRIVACY POLICY</a>
-            <a href="#" className="hover:text-white transition-colors">TERMS OF DISPATCH</a>
+            <span>LAGOS, NIGERIA</span>
             <button
               onClick={scrollToTop}
               className="p-2.5 rounded-full bg-white/10 hover:bg-white text-zinc-400 hover:text-[#141312] transition-all cursor-pointer"

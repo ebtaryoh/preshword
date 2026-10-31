@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Heart, Plus, Check, Star, Eye } from 'lucide-react';
+import { Heart, Plus, Check, MessageCircle } from 'lucide-react';
 import { formatPrice, calculateDiscount } from '../utils/format';
+import { buildWhatsAppSingleItemUrl } from '../utils/whatsapp';
 import confetti from 'canvas-confetti';
 
 export default function ProductCard({
@@ -33,6 +34,12 @@ export default function ProductCard({
     } catch {}
 
     setTimeout(() => setJustAdded(false), 1400);
+  };
+
+  const handleWhatsAppQuickOrder = (e) => {
+    e.stopPropagation();
+    const url = buildWhatsAppSingleItemUrl(product, 1);
+    window.open(url, '_blank');
   };
 
   return (
@@ -83,7 +90,7 @@ export default function ProductCard({
           </button>
         </div>
 
-        {/* Content Details (exact match to video: category tag, title, description) */}
+        {/* Content Details */}
         <div className="mt-3 px-0.5">
           {/* Category Tag */}
           <span className="font-mono text-[10px] font-bold text-[#E04F16] uppercase tracking-wider block mb-1">
@@ -95,14 +102,14 @@ export default function ProductCard({
             {product.name}
           </h3>
 
-          {/* Description (2 lines max, clean and readable) */}
+          {/* Description */}
           <p className="mt-1 text-xs text-zinc-500 line-clamp-2 leading-relaxed font-normal">
             {product.description}
           </p>
         </div>
       </div>
 
-      {/* Bottom Row: Price & Circular Black Plus (+) Button (exact match to video!) */}
+      {/* Bottom Row: Price & Action Buttons (WhatsApp 1-Tap & Add to Cart Plus) */}
       <div className="mt-3.5 pt-2.5 border-t border-zinc-100 flex items-center justify-between px-0.5">
         <div>
           <span className="font-extrabold text-sm sm:text-base text-[#141312] tracking-tight block">
@@ -115,23 +122,36 @@ export default function ProductCard({
           )}
         </div>
 
-        {/* The Solid Black Circle Plus Button from the video */}
-        <button
-          onClick={handleAdd}
-          className={`w-9 h-9 rounded-full flex items-center justify-center transition-all active:scale-90 cursor-pointer shadow-sm shrink-0 ${
-            justAdded
-              ? 'bg-emerald-600 text-white'
-              : 'bg-[#141312] hover:bg-[#E04F16] text-white'
-          }`}
-          aria-label={`Add ${product.name} to cart`}
-          title="Add to cart"
-        >
-          {justAdded ? (
-            <Check className="w-4 h-4 stroke-[3] animate-scale-in" />
-          ) : (
-            <Plus className="w-4 h-4 stroke-[2.5]" />
-          )}
-        </button>
+        {/* Action Pair: WhatsApp Order + Add to Bag */}
+        <div className="flex items-center gap-1.5">
+          {/* Direct WhatsApp Order Icon Button */}
+          <button
+            onClick={handleWhatsAppQuickOrder}
+            className="w-9 h-9 rounded-full bg-[#25D366]/15 hover:bg-[#25D366] text-[#25D366] hover:text-white flex items-center justify-center transition-all active:scale-90 cursor-pointer"
+            aria-label={`Order ${product.name} on WhatsApp`}
+            title="Order this item on WhatsApp"
+          >
+            <MessageCircle className="w-4 h-4 fill-current" />
+          </button>
+
+          {/* Add to Cart Plus Button */}
+          <button
+            onClick={handleAdd}
+            className={`w-9 h-9 rounded-full flex items-center justify-center transition-all active:scale-90 cursor-pointer shadow-sm shrink-0 ${
+              justAdded
+                ? 'bg-emerald-600 text-white'
+                : 'bg-[#141312] hover:bg-[#E04F16] text-white'
+            }`}
+            aria-label={`Add ${product.name} to cart`}
+            title="Add to cart"
+          >
+            {justAdded ? (
+              <Check className="w-4 h-4 stroke-[3] animate-scale-in" />
+            ) : (
+              <Plus className="w-4 h-4 stroke-[2.5]" />
+            )}
+          </button>
+        </div>
       </div>
     </div>
   );

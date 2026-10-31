@@ -1,5 +1,5 @@
 import React from 'react';
-import { Search, ShoppingBag, Heart, Sparkles, UtensilsCrossed, ArrowRight } from 'lucide-react';
+import { Search, ShoppingBag, Heart, UtensilsCrossed } from 'lucide-react';
 import { formatPrice } from '../utils/format';
 
 export default function Navbar({
@@ -16,14 +16,14 @@ export default function Navbar({
     <header className="sticky top-0 z-30 glass-nav transition-all duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20">
-          {/* Left: Brand Logo & Kicker */}
+          {/* Left: Brand Logo & Department Subtitle */}
           <div className="flex items-center gap-6">
             <button
               onClick={() => {
                 onSelectCategory('all');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className="text-left group flex items-center gap-2.5"
+              className="text-left group flex items-center gap-2.5 cursor-pointer"
             >
               <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-[#141312] text-white flex items-center justify-center font-black text-lg shadow-sm group-hover:scale-105 group-hover:bg-[#E04F16] transition-all">
                 <UtensilsCrossed className="w-5 h-5 text-white" />
@@ -38,61 +38,67 @@ export default function Navbar({
               </div>
             </button>
 
-            {/* Desktop Navigation Category Links */}
-            <nav className="hidden lg:flex items-center gap-1.5 ml-4 p-1 rounded-full bg-[#F4F2EE] border border-[#E8E6E1]">
+            {/* Desktop Navigation Category Links (Refined without generic emojis) */}
+            <nav className="hidden lg:flex items-center gap-1 ml-3 p-1 rounded-full bg-[#F4F2EE] border border-[#E8E6E1]">
               <button
                 onClick={() => onSelectCategory('all')}
-                className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all ${activeCategory === 'all'
+                className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer ${
+                  activeCategory === 'all'
                     ? 'bg-white text-[#141312] shadow-2xs'
                     : 'text-zinc-600 hover:text-[#141312]'
-                  }`}
+                }`}
               >
                 All
               </button>
               <button
                 onClick={() => onSelectCategory('cookware')}
-                className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all ${activeCategory === 'cookware'
+                className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer ${
+                  activeCategory === 'cookware'
                     ? 'bg-white text-[#141312] shadow-2xs'
                     : 'text-zinc-600 hover:text-[#141312]'
-                  }`}
+                }`}
               >
-                🍳 Kitchen Wares
+                Kitchen Wares
               </button>
               <button
                 onClick={() => onSelectCategory('appliances')}
-                className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all ${activeCategory === 'appliances'
+                className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer ${
+                  activeCategory === 'appliances'
                     ? 'bg-white text-[#141312] shadow-2xs'
                     : 'text-zinc-600 hover:text-[#141312]'
-                  }`}
+                }`}
               >
-                ⚡ Appliances
+                Appliances
               </button>
               <button
                 onClick={() => onSelectCategory('utensils')}
-                className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all ${activeCategory === 'utensils'
+                className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer ${
+                  activeCategory === 'utensils'
                     ? 'bg-white text-[#141312] shadow-2xs'
                     : 'text-zinc-600 hover:text-[#141312]'
-                  }`}
+                }`}
               >
-                🍴 Cutlery & Utensils
+                Cutlery & Utensils
               </button>
               <button
                 onClick={() => onSelectCategory('kids')}
-                className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all ${activeCategory === 'kids'
+                className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer ${
+                  activeCategory === 'kids'
                     ? 'bg-white text-[#141312] shadow-2xs'
                     : 'text-zinc-600 hover:text-[#141312]'
-                  }`}
+                }`}
               >
-                👶 Children Wares
+                Children Wares
               </button>
               <button
                 onClick={() => onSelectCategory('tableware')}
-                className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all ${activeCategory === 'tableware'
+                className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer ${
+                  activeCategory === 'tableware'
                     ? 'bg-white text-[#141312] shadow-2xs'
                     : 'text-zinc-600 hover:text-[#141312]'
-                  }`}
+                }`}
               >
-                🍽️ Tableware
+                Tableware
               </button>
             </nav>
           </div>
@@ -105,7 +111,7 @@ export default function Navbar({
               className="flex items-center gap-2 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-full bg-white border border-[#E8E6E1] hover:border-zinc-400 text-xs font-medium text-zinc-500 hover:text-[#141312] shadow-2xs transition-all cursor-pointer"
             >
               <Search className="w-4 h-4 text-zinc-400" />
-              <span className="hidden sm:inline">Search kitchenware...</span>
+              <span className="hidden sm:inline">Search housewares...</span>
               <kbd className="hidden md:inline-flex items-center px-1.5 py-0.5 text-[10px] font-mono font-bold bg-[#F5F3EF] text-zinc-500 rounded border border-zinc-200">
                 ⌘K
               </kbd>
@@ -125,7 +131,7 @@ export default function Navbar({
               )}
             </button>
 
-            {/* View Cart Pill Button (Matching the video's top right 'View cart' button!) */}
+            {/* View Cart Pill Button */}
             <button
               onClick={onOpenCart}
               className="flex items-center gap-2 px-4 py-2 sm:py-2.5 rounded-full bg-white hover:bg-[#141312] text-[#141312] hover:text-white border border-[#141312] transition-all shadow-2xs active:scale-95 group cursor-pointer"

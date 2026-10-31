@@ -57,15 +57,15 @@ export default function AnnouncementBar({ onOpenPromo, showToast }) {
           )}
         </div>
 
-        {/* Right Help / Guarantee */}
+        {/* Right Help / Direct Catalog Link */}
         <div className="hidden md:flex items-center gap-3 text-[10px] text-zinc-400 font-mono">
-          <span>30-DAY TRIAL</span>
+          <span>2-YEAR WARRANTY</span>
           <span className="text-zinc-700">•</span>
           <a
-            href="#bundle-builder"
+            href="#shop-catalog"
             className="text-white hover:text-[#E04F16] font-semibold transition-colors flex items-center gap-1"
           >
-            BUNDLE LAB (-15%) <ArrowRight className="w-3 h-3" />
+            EXPLORE CATALOG <ArrowRight className="w-3 h-3" />
           </a>
         </div>
       </div>

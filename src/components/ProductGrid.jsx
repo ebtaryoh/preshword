@@ -60,31 +60,31 @@ export default function ProductGrid({
 
   return (
     <section id="shop-catalog" className="py-8 sm:py-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      {/* Section Header (matching the video's 'Today's kitchen picks' & subtitle) */}
+      {/* Section Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
         <div>
           <div className="inline-flex items-center gap-1.5 font-mono text-[11px] font-bold uppercase tracking-widest text-[#E04F16] mb-1">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>ESTHETIC KITCHEN CATALOG</span>
+            <span>ESTHETIC HOUSE WARES CATALOG</span>
           </div>
           <h2 className="text-2xl sm:text-4xl font-extrabold tracking-[-0.03em] text-[#141312]">
-            {activeCategoryObj ? activeCategoryObj.name : "Today's kitchen picks"}
+            {activeCategoryObj ? activeCategoryObj.name : "Today's Curated Essentials"}
           </h2>
           <p className="mt-1 text-xs sm:text-sm text-zinc-500 font-medium">
             {activeCategoryObj
-              ? `Curated essentials for your ${activeCategoryObj.name.toLowerCase()} station.`
-              : 'Non-toxic cookware, cutlery, and tableware — prepared to dispatch.'}
+              ? `Curated essentials for your ${activeCategoryObj.name.toLowerCase()}.`
+              : 'Commercial blenders, smart toasters, non-toxic cookware, cutlery & children wares.'}
           </p>
         </div>
 
         <div className="flex items-center gap-2 self-start md:self-auto">
-          <span className="font-mono text-xs font-bold uppercase px-3 py-1.5 rounded-full bg-[#F5F3EF] border border-[#E8E6E1] text-zinc-600">
-            {filteredProducts.length} {filteredProducts.length === 1 ? 'Product' : 'Products'}
+          <span className="font-mono text-xs font-bold uppercase px-3.5 py-1.5 rounded-full bg-[#F5F3EF] border border-[#E8E6E1] text-zinc-600">
+            {filteredProducts.length} {filteredProducts.length === 1 ? 'Product Ready' : 'Products Ready'}
           </span>
         </div>
       </div>
 
-      {/* Large Rounded Search Input (exact match to video: '🔍 Search meals...' / 'Search groceries...') */}
+      {/* Large Rounded Search Input */}
       <div className="mb-4">
         <div className="relative w-full max-w-2xl">
           <Search className="w-5 h-5 text-zinc-400 absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none" />
@@ -92,7 +92,7 @@ export default function ProductGrid({
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search cookware, knives, pans, tableware..."
+            placeholder="Search blenders, toasters, cookware, cutlery, children wares..."
             className="w-full pl-12 pr-10 py-3.5 rounded-2xl bg-white border border-[#E8E6E1] text-sm font-medium text-[#141312] placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-[#E04F16] focus:border-transparent shadow-2xs transition-all"
           />
           {searchQuery && (
@@ -106,11 +106,11 @@ export default function ProductGrid({
         </div>
       </div>
 
-      {/* Pill Filter Tabs (exact match to video: [All], [Rice Dishes], [Swallow], etc.) */}
+      {/* Pill Filter Tabs */}
       <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none mb-6">
         <button
           onClick={() => onSelectCategory('all')}
-          className={`px-4 py-2 rounded-full font-bold text-xs tracking-tight shrink-0 transition-all ${
+          className={`px-4 py-2 rounded-full font-bold text-xs tracking-tight shrink-0 transition-all cursor-pointer ${
             activeCategory === 'all'
               ? 'bg-[#141312] text-white shadow-sm'
               : 'bg-white border border-[#E8E6E1] text-zinc-700 hover:border-zinc-400 shadow-2xs'
@@ -118,126 +118,98 @@ export default function ProductGrid({
         >
           All Pieces ({products.length})
         </button>
+
         {categories.map((cat) => {
-          const count = products.filter((p) => p.category === cat.id).length;
           const isSelected = activeCategory === cat.id;
           return (
             <button
               key={cat.id}
               onClick={() => onSelectCategory(cat.id)}
-              className={`px-4 py-2 rounded-full font-bold text-xs tracking-tight shrink-0 transition-all ${
+              className={`px-4 py-2 rounded-full font-bold text-xs tracking-tight shrink-0 transition-all cursor-pointer ${
                 isSelected
                   ? 'bg-[#141312] text-white shadow-sm'
                   : 'bg-white border border-[#E8E6E1] text-zinc-700 hover:border-zinc-400 shadow-2xs'
-                }`}
+              }`}
             >
-              {cat.name} ({count})
+              {cat.name} ({cat.count})
             </button>
           );
         })}
       </div>
 
-      {/* Secondary Controls: On Sale, In Stock & Sort */}
-      <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
-        <div className="flex flex-wrap items-center gap-2">
+      {/* Filter Toggles & Sorting Controls */}
+      <div className="flex flex-wrap items-center justify-between gap-3 mb-6 pb-4 border-b border-zinc-200/70 text-xs">
+        <div className="flex items-center gap-2">
           <button
-            onClick={() => setOnlySale(!onlySale)}
-            className={`px-3 py-1.5 rounded-xl font-mono text-xs font-bold flex items-center gap-1.5 transition-all ${
+            onClick={() => setOnlySale((prev) => !prev)}
+            className={`px-3 py-1.5 rounded-full font-medium transition-all cursor-pointer border ${
               onlySale
-                ? 'bg-[#E04F16] text-white shadow-sm'
-                : 'bg-white border border-[#E8E6E1] text-zinc-700 hover:bg-zinc-50'
+                ? 'bg-[#E04F16] text-white border-[#E04F16]'
+                : 'bg-white text-zinc-600 border-[#E8E6E1] hover:border-zinc-400'
             }`}
           >
-            <Tag className="w-3.5 h-3.5" />
-            <span>DISCOUNTED</span>
+            Special Offers
           </button>
-
           <button
-            onClick={() => setOnlyInStock(!onlyInStock)}
-            className={`px-3 py-1.5 rounded-xl font-mono text-xs font-bold flex items-center gap-1.5 transition-all ${
+            onClick={() => setOnlyInStock((prev) => !prev)}
+            className={`px-3 py-1.5 rounded-full font-medium transition-all cursor-pointer border ${
               onlyInStock
-                ? 'bg-emerald-600 text-white'
-                : 'bg-white border border-[#E8E6E1] text-zinc-700 hover:bg-zinc-50'
+                ? 'bg-emerald-600 text-white border-emerald-600'
+                : 'bg-white text-zinc-600 border-[#E8E6E1] hover:border-zinc-400'
             }`}
           >
-            <CheckCircle2 className="w-3.5 h-3.5" />
-            <span>SAME-DAY DISPATCH</span>
+            In Stock (Lekki Hub)
           </button>
-
-          {(searchQuery || onlySale || onlyInStock || activeCategory !== 'all') && (
-            <button
-              onClick={() => {
-                setSearchQuery('');
-                setOnlySale(false);
-                setOnlyInStock(false);
-                onSelectCategory('all');
-              }}
-              className="px-3 py-1.5 rounded-xl font-mono text-xs font-bold text-zinc-500 hover:text-black hover:bg-black/5 transition-all flex items-center gap-1"
-            >
-              <X className="w-3.5 h-3.5" />
-              <span>RESET</span>
-            </button>
-          )}
         </div>
 
-        {/* Sort Select */}
         <div className="flex items-center gap-2">
-          <span className="font-mono text-[11px] text-zinc-400 uppercase hidden sm:inline">
-            SORT:
-          </span>
-          <div className="relative inline-block">
-            <select
-              value={sortBy}
-              onChange={(e) => setSortBy(e.target.value)}
-              className="appearance-none bg-white border border-[#E8E6E1] hover:border-zinc-400 rounded-xl px-3.5 py-1.5 pr-8 text-xs font-bold text-[#141312] focus:outline-none focus:ring-2 focus:ring-[#141312] cursor-pointer shadow-2xs"
-            >
-              <option value="recommended">Featured Picks</option>
-              <option value="price-asc">Price: Low to High</option>
-              <option value="price-desc">Price: High to Low</option>
-              <option value="rating">Highest Rated</option>
-              <option value="newest">Newest Drops</option>
-            </select>
-            <ArrowUpDown className="w-3.5 h-3.5 text-zinc-400 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
-          </div>
+          <span className="text-zinc-500 font-medium hidden sm:inline">Sort by:</span>
+          <select
+            value={sortBy}
+            onChange={(e) => setSortBy(e.target.value)}
+            className="px-3 py-1.5 rounded-xl bg-white border border-[#E8E6E1] text-xs font-bold text-[#141312] focus:outline-none focus:ring-1 focus:ring-[#E04F16] cursor-pointer"
+          >
+            <option value="recommended">Featured Picks</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="rating">Top Rated</option>
+            <option value="newest">Latest 2026 Drops</option>
+          </select>
         </div>
       </div>
 
-      {/* 2-Column Mobile, 3-Column Tablet, 4-Column Desktop Product Grid (exact match to video) */}
-      {filteredProducts.length > 0 ? (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3.5 sm:gap-5">
-          {filteredProducts.map((p) => (
+      {/* Empty State */}
+      {filteredProducts.length === 0 ? (
+        <div className="text-center py-16 px-4 bg-white rounded-3xl border border-[#E8E6E1] my-4">
+          <p className="text-base font-bold text-[#141312]">No items matched your search.</p>
+          <p className="text-xs text-zinc-500 mt-1 max-w-sm mx-auto">
+            Try adjusting your search terms or clearing your department filter.
+          </p>
+          <button
+            onClick={() => {
+              setSearchQuery('');
+              onSelectCategory('all');
+              setOnlySale(false);
+              setOnlyInStock(false);
+            }}
+            className="mt-4 px-4 py-2 rounded-full bg-[#141312] text-white text-xs font-bold hover:bg-[#E04F16] transition-colors cursor-pointer"
+          >
+            Reset Filters
+          </button>
+        </div>
+      ) : (
+        /* The Responsive Product Grid */
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3.5 sm:gap-6">
+          {filteredProducts.map((product) => (
             <ProductCard
-              key={p.id}
-              product={p}
-              isWished={wishlist.includes(p.id)}
+              key={product.id}
+              product={product}
+              isWished={wishlist.includes(product.id)}
               onToggleWishlist={onToggleWishlist}
               onAddToCart={onAddToCart}
               onQuickView={onQuickView}
             />
           ))}
-        </div>
-      ) : (
-        <div className="py-20 px-4 text-center rounded-3xl bg-white border border-[#E8E6E1] shadow-2xs">
-          <div className="w-14 h-14 mx-auto rounded-full bg-[#F5F3EF] text-zinc-500 flex items-center justify-center font-bold text-xl mb-3">
-            🔍
-          </div>
-          <h3 className="font-extrabold text-lg text-[#141312]">
-            No matching cookware found
-          </h3>
-          <p className="mt-1 text-xs text-zinc-500 max-w-sm mx-auto">
-            Try adjusting your search terms or filters to view all 27 curated pieces.
-          </p>
-          <button
-            onClick={() => {
-              setSearchQuery('');
-              setOnlySale(false);
-              setOnlyInStock(false);
-              onSelectCategory('all');
-            }}
-            className="mt-5 px-6 py-2.5 rounded-full bg-[#141312] text-white font-bold text-xs uppercase tracking-wider hover:bg-[#E04F16] transition-all cursor-pointer"
-          >
-            Show All 27 Pieces
-          </button>
         </div>
       )}
     </section>

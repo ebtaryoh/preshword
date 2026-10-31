@@ -1,47 +1,84 @@
 import React, { useState } from 'react';
-import { Star, CheckCircle2, ThumbsUp, Sparkles, Filter } from 'lucide-react';
-import { reviews } from '../data/products';
+import { Star, CheckCircle2, ThumbsUp, Sparkles, Filter, PackageCheck } from 'lucide-react';
 
-const extendedReviews = [
-  ...reviews,
+const housewaresReviews = [
   {
-    id: 4,
+    id: 1,
     name: "Dr. Nkem Ekwueme",
-    role: "Culinary Physician, Ikoyi",
+    role: "Pediatrician & Mother",
     city: "Ikoyi, Lagos",
-    dish: "Poached Sea Bass & Steamed Asparagus",
+    purchasedItem: "5-Piece BPA-Free Silicone Kids Tableware",
     rating: 5,
-    text: "As someone who actively monitors endocrine disruptors, switching to Preshword's sol-gel ceramic was non-negotiable. Zero PTFE or lead leaching, heats up with surgical precision, and wipes clean with a dry cloth.",
+    text: "The suction on this children's plate is practically unbreakable on our dining table high chair. My 2-year-old cannot fling food across the room anymore. Dishwasher-safe and completely odor-free.",
     avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop",
     verified: true,
-    helpfulCount: 42,
+    helpfulCount: 48,
     date: "2 days ago"
   },
   {
-    id: 5,
-    name: "Tariq Danjuma",
-    role: "Architect & Weekend Host",
-    city: "Maitama, Abuja",
-    dish: "Charred Suya Ribeye & Roasted Baby Potatoes",
+    id: 2,
+    name: "Tunde Balogun",
+    role: "Culinary Enthusiast",
+    city: "Victoria Island, Lagos",
+    purchasedItem: "1500W Commercial Vortex Blender & Smart Toaster",
     rating: 5,
-    text: "The aesthetic harmony is unmatched. The Matcha Sage cookware looks like a sculpture on our induction cooktop. Our dinner party guests always ask where we got it before they even taste the food.",
+    text: "The 1500W blender pulverized soaked peeled beans for akara into silk in under 30 seconds. No burning motor smell, no smoke. The toaster's LED countdown and even golden browning are perfection.",
     avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&h=150&fit=crop",
     verified: true,
-    helpfulCount: 38,
+    helpfulCount: 52,
+    date: "5 days ago"
+  },
+  {
+    id: 3,
+    name: "Chidinma Okafor",
+    role: "Interior Stylist & Host",
+    city: "Lekki Phase 1, Lagos",
+    purchasedItem: "4-Piece Sol-Gel Ceramic Cookware Set",
+    rating: 5,
+    text: "I was skeptical about non-stick ceramic on Nigerian high heat, but this Sol-Gel set is unbelievable. Cooked smokeless party jollof and fried plantains with zero sticking and wiped clean with just paper towels.",
+    avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop",
+    verified: true,
+    helpfulCount: 64,
     date: "1 week ago"
   },
   {
-    id: 6,
-    name: "Chidinma Okafor",
-    role: "Recipe Developer & Stylist",
-    city: "Lekki Phase 1, Lagos",
-    dish: "Smoky Party Jollof & Plantain Crisps",
+    id: 4,
+    name: "Barrister Amina Bello",
+    role: "Corporate Attorney",
+    city: "Maitama, Abuja",
+    purchasedItem: "24-Piece Satin Gold & Black Cutlery Set",
     rating: 5,
-    text: "Cooked party jollof in the Dutch oven — not a single grain burnt or stuck to the bottom, and the heat retention kept it piping hot for over 2 hours on the dining table. Absolutely sensational.",
-    avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop",
+    text: "Substantial 18/10 stainless steel weight in hand — not flimsy at all. The satin gold plating does not peel or scratch, and the presentation case makes it feel like royalty. Worth every naira.",
+    avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop",
     verified: true,
-    helpfulCount: 56,
+    helpfulCount: 39,
+    date: "2 weeks ago"
+  },
+  {
+    id: 5,
+    name: "Engr. Femi Adeleke",
+    role: "Project Manager",
+    city: "Ikeja GRA, Lagos",
+    purchasedItem: "3-Tier 304 Stainless Steamer Pot",
+    rating: 5,
+    text: "Steamed three full tiers of moimoi pouches simultaneously. Even steam circulation throughout all racks, sturdy heat-resistant handles, and zero steam leakage from the tempered glass lid.",
+    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop",
+    verified: true,
+    helpfulCount: 31,
     date: "3 weeks ago"
+  },
+  {
+    id: 6,
+    name: "Mrs. Ngozi Eze",
+    role: "Home Baker & Restaurateur",
+    city: "Enugu & Lagos",
+    purchasedItem: "Cast Iron Enameled Dutch Oven Pot",
+    rating: 5,
+    text: "Heat retention is monstrous. Made slow-cooked beef stew and artisanal sourdough bread. The heavy enamel lid seals all moisture inside. Arrived in Lagos within 3 hours via rider dispatch.",
+    avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop",
+    verified: true,
+    helpfulCount: 44,
+    date: "1 month ago"
   }
 ];
 
@@ -50,8 +87,8 @@ export default function ReviewsSection() {
   const [helpfulClicked, setHelpfulClicked] = useState({});
 
   const filteredReviews = filterCity === 'all'
-    ? extendedReviews
-    : extendedReviews.filter((r) => r.city?.toLowerCase().includes(filterCity.toLowerCase()));
+    ? housewaresReviews
+    : housewaresReviews.filter((r) => r.city?.toLowerCase().includes(filterCity.toLowerCase()));
 
   const handleHelpful = (id) => {
     setHelpfulClicked((prev) => ({
@@ -68,18 +105,17 @@ export default function ReviewsSection() {
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FFF7ED] border border-[#E04F16]/20 mb-3">
             <span className="w-1.5 h-1.5 rounded-full bg-[#E04F16]" />
             <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#E04F16]">
-              VERIFIED OWNER REVIEWS
+              VERIFIED OWNER EXPERIENCES
             </span>
           </div>
 
           <h2 className="text-3xl sm:text-5xl font-extrabold text-[#141312] tracking-tight leading-[1.1]">
             Loved by Nigeria’s most <br />
-            <span className="text-[#E04F16]">discerning home cooks.</span>
+            <span className="text-[#E04F16]">discerning households.</span>
           </h2>
 
           <p className="mt-3 text-sm sm:text-base text-zinc-600 leading-relaxed max-w-xl">
-            From Sunday brunches in Lekki Phase 1 to celebratory feasts in Abuja.
-            Read real, unedited experiences from verified owners.
+            From modern Lekki and VI penthouses to family homes in Abuja and Ikeja. Read authentic, unedited feedback from verified buyers.
           </p>
         </div>
 
@@ -96,10 +132,10 @@ export default function ReviewsSection() {
               ))}
             </div>
             <p className="font-mono text-xs font-bold text-[#141312]">
-              3,480+ 5-Star Reviews
+              3,480+ Verified Deliveries
             </p>
             <p className="text-[11px] text-zinc-400">
-              100% verified Nigerian deliveries
+              Same-day rider dispatch across Lagos
             </p>
           </div>
         </div>
@@ -155,13 +191,11 @@ export default function ReviewsSection() {
                   </span>
                 </div>
 
-                {/* Cooked Dish Highlight */}
-                {rev.dish && (
-                  <div className="mb-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#F5F3EF] text-zinc-700 text-xs font-medium">
-                    <span className="text-[#141312] font-bold">Cooked:</span>
-                    <span className="truncate">{rev.dish}</span>
-                  </div>
-                )}
+                {/* Purchased Housewares Item Tag */}
+                <div className="mb-3.5 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#F5F3EF] text-zinc-700 text-xs font-medium">
+                  <PackageCheck className="w-3.5 h-3.5 text-[#E04F16] shrink-0" />
+                  <span className="truncate">{rev.purchasedItem}</span>
+                </div>
 
                 {/* Review Body */}
                 <p className="text-sm text-zinc-700 leading-relaxed font-normal">
@@ -188,7 +222,7 @@ export default function ReviewsSection() {
                       )}
                     </div>
                     <span className="text-[11px] text-zinc-400 font-mono block truncate">
-                      {rev.role}
+                      {rev.role} • {rev.city}
                     </span>
                   </div>
                 </div>
