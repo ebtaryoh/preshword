@@ -13,460 +13,311 @@ import {
   Leaf,
   RotateCcw,
   Clock,
-  ChevronRight,
   Eye,
   Zap,
   Smile,
-  Coffee,
-  Package
+  ChevronDown
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { WHATSAPP_NUMBER, buildWhatsAppSingleItemUrl } from '../utils/whatsapp';
 import { formatPrice } from '../utils/format';
 import { products } from '../data/products';
 
-const heroItems = [
-  {
-    id: 'collection',
-    productId: 1,
-    tabLabel: 'House Wares',
-    shortDish: 'Blenders, Toasters & Pots',
-    headline: 'Modern Kitchen & House Wares Collection',
-    tagline: 'Curated Home Essentials',
-    badge: '2026 Home Drop',
-    accentColor: '#E04F16',
-    image: '/images/hero-housewares-collection.jpg',
-    dishImage: '/images/product-cookware-set.jpg',
-    viewLabel: 'Full House Wares Island',
-    altViewLabel: 'Pristine Cookware Set',
-    description:
-      'Curated for modern living. From high-torque 1500W blenders and smart toasters to 24-piece luxury dining cutlery, non-toxic ceramic cookware, and safe children tableware.',
-    quote: 'The collection looks like it came straight out of Architectural Digest. Exceptional quality.',
-    author: 'Chidinma O. • Lekki Phase 1, Lagos',
-    rating: 5.0,
-    reviews: 320,
-    specs: ['Commercial 1500W', 'Digital Smart Toaster', '18/10 Luxury Cutlery', '100% Non-Toxic']
-  },
-  {
-    id: 'appliances',
-    productId: 5,
-    tabLabel: 'Blenders & Toasters',
-    shortDish: 'Smart House Appliances',
-    headline: '1500W Commercial Blender & Smart Toaster',
-    tagline: 'House Wares & Smart Small Appliances',
-    badge: 'High-Power Quartz',
-    accentColor: '#0284C7',
-    image: '/images/product-blender-puree.jpg',
-    dishImage: '/images/product-smart-toaster.jpg',
-    viewLabel: '1500W Vortex Blender',
-    altViewLabel: 'Smart Digital Toaster',
-    description:
-      'Commercial 1500W blender with 6 Japanese steel blades alongside a digital 2-slice toaster with LED timer and 6 shade levels. Fast, durable, and whisper-smooth.',
-    quote: 'Pulverizes tough beans, peppers and frozen fruits in 30 seconds flat. Essential kitchen powerhouse.',
-    author: 'Tunde B. • Victoria Island, Lagos',
-    rating: 5.0,
-    reviews: 312,
-    specs: ['1500W Peak Power', 'Digital Countdown LED', '6-Blade Japanese Steel', '2-Year Warranty']
-  },
-  {
-    id: 'cutlery',
-    productId: 4,
-    tabLabel: 'Luxury Cutlery',
-    shortDish: '24pc Gold & Black Flatware',
-    headline: '24-Piece Satin Gold & Black Cutlery Set',
-    tagline: 'Utensils & Luxury Dining Flatware',
-    badge: '18/10 Stainless Steel',
-    accentColor: '#D97706',
-    image: '/images/product-luxury-cutlery.jpg',
-    dishImage: '/images/product-knife-plantain-prep.jpg',
-    viewLabel: '24pc Cutlery Flatware',
-    altViewLabel: '6pc Kitchen Prep Knives',
-    description:
-      'Complete 24-piece luxury 18/10 stainless steel flatware set with electroplated satin gold heads and matte black handles. 6 dinner knives, 6 forks, 6 soup spoons, and 6 dessert spoons.',
-    quote: 'Elevated our family dining table completely. Heavy, balanced, and stunning finish.',
-    author: 'Chidinma O. • Lekki Phase 1, Lagos',
-    rating: 5.0,
-    reviews: 198,
-    specs: ['24 Dining Pieces', '18/10 Stainless Steel', 'Corrosion Resistant', 'Luxury Presentation Box']
-  },
-  {
-    id: 'kids',
-    productId: 7,
-    tabLabel: 'Children Wares',
-    shortDish: 'BPA-Free Kids Feeding Sets',
-    headline: '5-Piece Eco Silicone & Bamboo Kids Set',
-    tagline: 'Children Wares & Family Essentials',
-    badge: '100% Food-Grade Silicone',
-    accentColor: '#10B981',
-    image: '/images/product-children-tableware.jpg',
-    dishImage: '/images/product-pantry-jars.jpg',
-    viewLabel: 'Children Tableware Set',
-    altViewLabel: 'Airtight Glass Canisters',
-    description:
-      'Aesthetic, BPA-free platinum silicone and organic bamboo children tableware set. Includes powerful suction divided plate, toddler straw cup, baby fork and spoon, and waterproof catch-all bib.',
-    quote: 'Safe, durable, and mess-free. The suction plate stays firmly fixed to the high chair!',
-    author: 'Dr. Fatima • Pediatrician & Mom, Abuja',
-    rating: 5.0,
-    reviews: 184,
-    specs: ['BPA & Phthalate Free', 'Strong Suction Base', 'Microwave & Dishwasher Safe', 'Soft Ergonomic Grip']
-  }
-];
-
 export default function Hero({ onExplore, onQuickAdd, onSelectCategory }) {
-  const [activeItem, setActiveItem] = useState(heroItems[0]);
   const [useAltImage, setUseAltImage] = useState(false);
   const [added, setAdded] = useState(false);
 
-  // Find corresponding product from catalog
-  const currentProduct = products.find((p) => p.id === activeItem.productId) || {
-    id: activeItem.productId,
-    name: activeItem.headline,
-    price: 58000,
-    originalPrice: 72000,
-    category: 'cookware'
-  };
-
-  const handleTabChange = (item) => {
-    setActiveItem(item);
-    setUseAltImage(false);
-  };
+  // Flagship featured product (ID 1: Luxury Sol-Gel Ceramic Cookware Set)
+  const flagshipProduct = products.find((p) => p.id === 1) || products[0];
 
   const handleHeroQuickAdd = () => {
-    onQuickAdd(activeItem.productId);
+    onQuickAdd(flagshipProduct.id);
     setAdded(true);
 
     try {
       confetti({
-        particleCount: 36,
+        particleCount: 40,
         spread: 60,
         origin: { y: 0.65 },
-        colors: [activeItem.accentColor, '#25D366', '#FFFFFF', '#141312']
+        colors: ['#E04F16', '#25D366', '#FFFFFF', '#FFAB7A']
       });
     } catch {}
 
-    setTimeout(() => setAdded(false), 2000);
+    setTimeout(() => setAdded(false), 2200);
   };
 
-  const activeImageSrc = useAltImage ? activeItem.dishImage : activeItem.image;
-  const whatsappUrl = buildWhatsAppSingleItemUrl(currentProduct, 1);
+  const whatsappInquiryUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+    'Hello Preshword Living! 👋 I am interested in your Kitchen & House Wares collection (blenders, toasters, cookware, cutlery, and children tableware). Please share current availability and dispatch details for Lagos delivery.'
+  )}`;
+
+  const heroImageSrc = useAltImage
+    ? '/images/product-cookware-set.jpg'
+    : '/images/hero-housewares-collection.jpg';
+
+  const scrollToCatalog = () => {
+    onExplore();
+    const el = document.getElementById('shop-catalog');
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
-    <section className="pt-2 pb-8 sm:pt-4 sm:pb-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      {/* Main Luxury Hero Card */}
-      <div className="relative rounded-[30px] sm:rounded-[38px] bg-[#141312] text-white overflow-hidden p-5 sm:p-10 lg:p-14 border border-white/10 shadow-2xl">
-        {/* Dynamic Warm Ambient Radial Glows */}
+    <section className="pt-2 pb-6 sm:pt-4 sm:pb-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Flagship Luxury Hero Canvas */}
+      <div className="relative rounded-[32px] sm:rounded-[40px] bg-[#121110] text-white overflow-hidden p-6 sm:p-10 lg:p-14 border border-white/10 shadow-2xl">
+        {/* Ambient Warm Studio Glows */}
         <div
-          className="absolute -top-32 -right-32 w-[520px] sm:w-[680px] h-[520px] sm:h-[680px] rounded-full blur-[110px] pointer-events-none transition-all duration-700 opacity-60"
+          className="absolute -top-32 -right-32 w-[540px] sm:w-[680px] h-[540px] sm:h-[680px] rounded-full blur-[120px] pointer-events-none opacity-60"
           style={{
-            background: `radial-gradient(circle, ${activeItem.accentColor} 0%, rgba(224, 79, 22, 0.15) 50%, transparent 75%)`
+            background:
+              'radial-gradient(circle, rgba(224, 79, 22, 0.5) 0%, rgba(245, 158, 11, 0.15) 50%, transparent 75%)'
           }}
         />
-        <div className="absolute -bottom-24 -left-24 w-72 sm:w-96 h-72 sm:h-96 bg-amber-500/10 rounded-full blur-[90px] pointer-events-none" />
+        <div className="absolute -bottom-28 -left-28 w-80 sm:w-96 h-80 sm:h-96 bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none" />
 
-        {/* Top Kicker Bar */}
+        {/* Top Operational Status Header */}
         <div className="relative z-10 flex flex-wrap items-center justify-between gap-3 pb-6 border-b border-white/10">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/8 border border-white/10 backdrop-blur-md">
+          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/8 border border-white/10 backdrop-blur-md">
             <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse" />
             <span className="font-mono text-[10px] sm:text-[11px] font-bold tracking-widest text-zinc-300 uppercase">
-              LAGOS HUB DISPATCHING • KITCHEN WARES, UTENSILS & HOUSE WARES
+              LAGOS HUB DISPATCHING • SAMEDAY LEKKI, VI & MAINLAND
             </span>
           </div>
 
-          <div className="hidden sm:flex items-center gap-4 text-xs font-mono text-zinc-400">
-            <span className="flex items-center gap-1.5">
-              <ShieldCheck className="w-4 h-4 text-emerald-400" />
+          <div className="flex items-center gap-3 sm:gap-4 text-xs font-mono text-zinc-400">
+            <span className="flex items-center gap-1.5 text-emerald-400 font-bold">
+              <ShieldCheck className="w-4 h-4" />
               <span>Official 2-Year Warranty</span>
             </span>
-            <span className="text-zinc-600">•</span>
-            <span>Free Delivery Over ₦50,000</span>
+            <span className="hidden sm:inline text-zinc-600">•</span>
+            <span className="hidden sm:inline">Pay On Delivery in Lagos</span>
           </div>
         </div>
 
-        {/* Hero Body Grid */}
-        <div className="relative z-10 mt-6 sm:mt-8 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-          {/* Left Column: Copy, Category Pillars & Actions */}
+        {/* Main Editorial Hero Grid */}
+        <div className="relative z-10 mt-8 sm:mt-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          {/* Left Column: Clear Value Proposition & Conversion */}
           <div className="lg:col-span-7 flex flex-col justify-center">
             {/* Tagline Badge */}
-            <div className="inline-flex items-center gap-2 mb-3.5">
-              <span
-                className="px-2.5 py-1 rounded-full font-mono text-[11px] font-black uppercase tracking-wider border"
-                style={{
-                  backgroundColor: `${activeItem.accentColor}25`,
-                  borderColor: `${activeItem.accentColor}60`,
-                  color: activeItem.accentColor === '#E04F16' ? '#FF7A45' : activeItem.accentColor
-                }}
-              >
-                {activeItem.badge}
+            <div className="inline-flex items-center gap-2 mb-3">
+              <span className="px-3 py-1 rounded-full font-mono text-[11px] font-black uppercase tracking-wider bg-[#E04F16]/20 border border-[#E04F16]/50 text-[#FF7A45]">
+                2026 CURATED HOME DROP
               </span>
               <span className="text-xs text-zinc-400 font-medium">
-                {activeItem.tagline}
+                Kitchen Wares • Appliances • Utensils • Kids
               </span>
             </div>
 
-            {/* Main Headline */}
-            <h1 className="font-extrabold text-3xl sm:text-5xl lg:text-[3.5rem] tracking-[-0.035em] text-white leading-[1.08]">
+            {/* Master Headline */}
+            <h1 className="font-extrabold text-3xl sm:text-5xl lg:text-[3.6rem] tracking-[-0.035em] text-white leading-[1.08]">
               Modern kitchen wares, <br className="hidden sm:inline" />
               utensils &{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF7A45] via-[#E04F16] to-[#FFAB7A]">
-                house wares.
+                house essentials.
               </span>
             </h1>
 
-            {/* Subtitle explicitly covering the store scope */}
-            <p className="mt-4 text-sm sm:text-base text-zinc-300 max-w-xl font-normal leading-relaxed">
-              From commercial 1500W blenders and smart toasters to luxury cutlery sets, non-toxic cookware, and safe children's dining wares. Everything for the modern home in one curated store.
+            {/* Clear, focused store description */}
+            <p className="mt-4 sm:mt-5 text-sm sm:text-base text-zinc-300 max-w-xl font-normal leading-relaxed">
+              Curated for Nigerian families who value durability and aesthetic living. From high-torque 1500W blenders and smart toasters to 24-piece luxury cutlery, non-toxic Sol-Gel cookware, and BPA-free children tableware.
             </p>
 
-            {/* 4 Category Showcase Tabs */}
-            <div className="mt-6 pt-5 border-t border-white/10">
-              <div className="flex items-center justify-between mb-2.5">
-                <span className="text-[11px] font-mono font-bold text-zinc-400 uppercase tracking-wider flex items-center gap-1.5">
-                  <Flame className="w-3.5 h-3.5 text-[#E04F16]" />
-                  <span>Explore What We Sell:</span>
-                </span>
-                <span className="text-[11px] font-mono font-bold" style={{ color: activeItem.accentColor }}>
-                  {formatPrice(currentProduct.price)}
-                </span>
-              </div>
-
-              {/* 4 Tabs */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                {heroItems.map((item) => {
-                  const isSelected = activeItem.id === item.id;
-                  return (
-                    <button
-                      key={item.id}
-                      onClick={() => handleTabChange(item)}
-                      className={`py-2.5 px-3 rounded-2xl text-left transition-all cursor-pointer border flex flex-col justify-between ${
-                        isSelected
-                          ? 'bg-white text-[#141312] border-white shadow-md scale-[1.02]'
-                          : 'bg-white/5 hover:bg-white/10 text-zinc-300 border-white/10 hover:border-white/20'
-                      }`}
-                    >
-                      <div className="flex items-center justify-between w-full mb-1">
-                        <span className="font-mono text-[10px] font-bold uppercase truncate">
-                          {item.tabLabel}
-                        </span>
-                        {isSelected && (
-                          <span
-                            className="w-2 h-2 rounded-full shrink-0"
-                            style={{ backgroundColor: item.accentColor }}
-                          />
-                        )}
-                      </div>
-                      <span
-                        className={`text-[11px] font-bold truncate ${
-                          isSelected ? 'text-[#141312]' : 'text-zinc-400'
-                        }`}
-                      >
-                        {item.shortDish}
-                      </span>
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* CTA Buttons: Primary WhatsApp + Explore Catalog */}
-            <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-              {/* 1. Direct WhatsApp Order Button */}
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="flex-1 py-4 px-6 rounded-2xl bg-[#25D366] hover:bg-[#20BA5A] text-[#141312] font-black text-sm tracking-wide shadow-lg shadow-[#25D366]/25 transition-all active:scale-95 flex items-center justify-center gap-2.5 cursor-pointer group"
-              >
-                <div className="relative">
-                  <MessageCircle className="w-5 h-5 fill-current" />
-                  <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-white animate-ping" />
-                </div>
-                <span>Order on WhatsApp ({formatPrice(currentProduct.price)})</span>
-              </a>
-
-              {/* 2. Explore Catalog Button */}
+            {/* 4 Core Department Pills */}
+            <div className="mt-5 flex flex-wrap gap-2">
               <button
                 onClick={() => {
-                  onSelectCategory(activeItem.id === 'cutlery' ? 'utensils' : activeItem.id === 'collection' ? 'all' : activeItem.id);
+                  onSelectCategory('cookware');
                   const el = document.getElementById('shop-catalog');
                   if (el) el.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="py-4 px-6 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-bold text-sm tracking-wide border border-white/15 transition-all active:scale-95 flex items-center justify-center gap-2 cursor-pointer"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/12 border border-white/10 hover:border-white/25 text-xs text-zinc-300 hover:text-white transition-all cursor-pointer"
               >
-                <Utensils className="w-4 h-4 text-[#FF7A45]" />
-                <span>Browse {activeItem.tabLabel}</span>
-                <ArrowRight className="w-4 h-4 text-zinc-400" />
+                <span className="text-sm">🍳</span>
+                <span className="font-medium">Sol-Gel Cookware</span>
+              </button>
+              <button
+                onClick={() => {
+                  onSelectCategory('appliances');
+                  const el = document.getElementById('shop-catalog');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/12 border border-white/10 hover:border-white/25 text-xs text-zinc-300 hover:text-white transition-all cursor-pointer"
+              >
+                <span className="text-sm">⚡</span>
+                <span className="font-medium">Blenders & Toasters</span>
+              </button>
+              <button
+                onClick={() => {
+                  onSelectCategory('utensils');
+                  const el = document.getElementById('shop-catalog');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/12 border border-white/10 hover:border-white/25 text-xs text-zinc-300 hover:text-white transition-all cursor-pointer"
+              >
+                <span className="text-sm">🍴</span>
+                <span className="font-medium">Luxury Cutlery</span>
+              </button>
+              <button
+                onClick={() => {
+                  onSelectCategory('kids');
+                  const el = document.getElementById('shop-catalog');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/12 border border-white/10 hover:border-white/25 text-xs text-zinc-300 hover:text-white transition-all cursor-pointer"
+              >
+                <span className="text-sm">👶</span>
+                <span className="font-medium">Children Wares</span>
               </button>
             </div>
 
-            {/* Social Proof & Customer Avatars */}
-            <div className="mt-7 flex items-center gap-4 text-left">
-              <div className="flex -space-x-2 shrink-0">
-                <img
-                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80&h=80&fit=crop"
-                  alt="Chidinma, Lekki"
-                  className="w-10 h-10 rounded-full border-2 border-[#141312] object-cover"
-                />
-                <img
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop"
-                  alt="Tunde, VI"
-                  className="w-10 h-10 rounded-full border-2 border-[#141312] object-cover"
-                />
-                <img
-                  src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=80&h=80&fit=crop"
-                  alt="Fatima, Abuja"
-                  className="w-10 h-10 rounded-full border-2 border-[#141312] object-cover"
-                />
-                <div className="w-10 h-10 rounded-full bg-[#E04F16] border-2 border-[#141312] flex items-center justify-center text-white text-[10px] font-black font-mono">
-                  +3.4k
+            {/* Primary Action Buttons */}
+            <div className="mt-7 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+              {/* WhatsApp Conversion Button */}
+              <a
+                href={whatsappInquiryUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-2xl bg-[#25D366] hover:bg-[#20bd5a] text-black font-extrabold text-sm uppercase tracking-wider transition-all shadow-lg hover:shadow-[#25D366]/25 hover:scale-[1.02] active:scale-98"
+              >
+                <MessageCircle className="w-5 h-5 fill-black stroke-black" />
+                <span>Order on WhatsApp</span>
+                <span className="inline-flex items-center px-1.5 py-0.5 rounded-full bg-black/15 text-[10px] font-mono font-black">
+                  LIVE
+                </span>
+              </a>
+
+              {/* Smooth Scroll to Catalog */}
+              <button
+                onClick={scrollToCatalog}
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-white/10 hover:bg-white/18 text-white border border-white/15 hover:border-white/30 font-extrabold text-sm uppercase tracking-wider transition-all cursor-pointer"
+              >
+                <span>Explore Catalog (14 Items)</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+
+            {/* Social Proof & Customer Trust */}
+            <div className="mt-8 pt-6 border-t border-white/10 flex flex-wrap items-center gap-5 sm:gap-8">
+              <div className="flex items-center gap-2.5">
+                <div className="flex -space-x-2">
+                  <img
+                    src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80&auto=format&fit=crop&q=80"
+                    alt="Customer"
+                    className="w-8 h-8 rounded-full border-2 border-[#121110] object-cover"
+                  />
+                  <img
+                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&auto=format&fit=crop&q=80"
+                    alt="Customer"
+                    className="w-8 h-8 rounded-full border-2 border-[#121110] object-cover"
+                  />
+                  <img
+                    src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=80&auto=format&fit=crop&q=80"
+                    alt="Customer"
+                    className="w-8 h-8 rounded-full border-2 border-[#121110] object-cover"
+                  />
+                </div>
+                <div>
+                  <div className="flex items-center gap-1 text-amber-400">
+                    <Star className="w-3.5 h-3.5 fill-amber-400" />
+                    <span className="font-extrabold text-xs text-white">4.9 / 5.0</span>
+                  </div>
+                  <p className="text-[11px] text-zinc-400">
+                    Trusted by 500+ Lagos homes
+                  </p>
                 </div>
               </div>
 
-              <div>
-                <div className="flex items-center gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
-                  ))}
-                  <span className="font-extrabold text-xs text-white ml-1">
-                    {activeItem.rating} / 5.0
-                  </span>
-                </div>
-                <p className="text-xs text-zinc-400 mt-0.5">
-                  Trusted by 3,400+ homes across Lagos, Abuja & Port Harcourt.
-                </p>
+              <div className="hidden sm:block h-6 w-px bg-white/10" />
+
+              <div className="flex items-center gap-2 text-xs text-zinc-300">
+                <Truck className="w-4 h-4 text-[#FF7A45]" />
+                <span>Express Lekki & VI Dispatch (2–4 hrs)</span>
               </div>
             </div>
           </div>
 
-          {/* Right Column: Visual Stage with Switcher */}
+          {/* Right Column: Heroic Editorial Visual Showcase */}
           <div className="lg:col-span-5 relative">
-            <div className="relative rounded-[28px] overflow-hidden aspect-[4/4.6] sm:aspect-[4/4.3] bg-zinc-900 border border-white/15 shadow-2xl group">
-              {/* Product / Lifestyle Image */}
+            <div className="relative rounded-3xl overflow-hidden aspect-[4/3] sm:aspect-[4/3] lg:aspect-[5/4] bg-[#1E1C1A] border border-white/15 shadow-2xl group">
               <img
-                key={activeImageSrc}
-                src={activeImageSrc}
-                alt={activeItem.headline}
-                className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105 animate-scale-in"
+                src={heroImageSrc}
+                alt="Preshword Living House Wares Collection"
+                className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-104"
+                loading="eager"
               />
 
               {/* Cinematic Vignette */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none" />
 
               {/* Top Floating Badge Row */}
-              <div className="absolute top-4 inset-x-4 flex items-center justify-between z-10">
-                <span className="px-3 py-1.5 rounded-full bg-black/75 backdrop-blur-md border border-white/15 text-[11px] font-mono font-bold text-white flex items-center gap-1.5 shadow-md">
+              <div className="absolute top-3.5 inset-x-3.5 flex items-center justify-between z-10">
+                <span className="px-3 py-1 rounded-full bg-black/75 backdrop-blur-md border border-white/15 text-[11px] font-mono font-bold text-white flex items-center gap-1.5 shadow-md">
                   <Star className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
-                  <span>{activeItem.rating}★ ({activeItem.reviews} Reviews)</span>
+                  <span>Curated Collection</span>
                 </span>
 
                 {/* Perspective View Switcher */}
                 <button
                   onClick={() => setUseAltImage((prev) => !prev)}
-                  className="px-3 py-1.5 rounded-full bg-white/20 hover:bg-white/30 text-white backdrop-blur-md border border-white/25 text-[11px] font-mono font-bold flex items-center gap-1.5 transition-all active:scale-95 cursor-pointer shadow-md"
-                  title="Switch image view"
+                  className="px-3 py-1 rounded-full bg-white/20 hover:bg-white/30 text-white backdrop-blur-md border border-white/25 text-[11px] font-mono font-bold flex items-center gap-1.5 transition-all active:scale-95 cursor-pointer shadow-md"
+                  title="Switch preview view"
                 >
                   <Eye className="w-3.5 h-3.5 text-[#FF7A45]" />
-                  <span>{useAltImage ? activeItem.viewLabel : activeItem.altViewLabel}</span>
+                  <span>{useAltImage ? 'Full Island View' : 'Cookware View'}</span>
                 </button>
               </div>
 
-              {/* Bottom In-Image Product Dispatch Card */}
-              <div className="absolute bottom-4 inset-x-4 p-4 rounded-2xl bg-black/80 backdrop-blur-xl border border-white/20 z-10 shadow-xl">
+              {/* Floating Flagship Product Card */}
+              <div className="absolute bottom-3.5 inset-x-3.5 p-3.5 sm:p-4 rounded-2xl bg-black/85 backdrop-blur-xl border border-white/20 z-10 shadow-xl">
                 <div className="flex items-start justify-between gap-3 mb-2">
                   <div className="min-w-0 flex-1">
                     <span className="font-mono text-[9px] font-bold text-[#FF7A45] uppercase tracking-wider block">
-                      {activeItem.tagline}
+                      FEATURED ESSENTIAL
                     </span>
-                    <h3 className="font-extrabold text-sm sm:text-base text-white truncate leading-snug">
-                      {activeItem.headline}
+                    <h3 className="font-extrabold text-sm text-white truncate">
+                      {flagshipProduct.name}
                     </h3>
-                    <p className="text-xs text-zinc-300 line-clamp-1 italic mt-0.5">
-                      "{activeItem.quote}"
+                    <p className="text-[11px] text-zinc-300 truncate mt-0.5">
+                      Non-toxic Sol-Gel ceramic with stay-cool gold handles
                     </p>
                   </div>
 
                   <div className="text-right shrink-0">
-                    <span className="font-mono text-[11px] text-zinc-400 line-through block leading-none">
-                      {formatPrice(currentProduct.originalPrice || currentProduct.price * 1.25)}
+                    <span className="font-mono text-[10px] text-zinc-400 line-through block leading-none">
+                      {formatPrice(flagshipProduct.originalPrice || 72000)}
                     </span>
-                    <span className="font-extrabold text-base sm:text-lg text-[#25D366] leading-tight block">
-                      {formatPrice(currentProduct.price)}
+                    <span className="font-extrabold text-base text-[#25D366] leading-tight block">
+                      {formatPrice(flagshipProduct.price)}
                     </span>
                   </div>
                 </div>
 
-                {/* Card Action Row: 1-Tap Add to Bag */}
-                <div className="pt-2.5 border-t border-white/10 flex items-center justify-between gap-2">
+                <div className="pt-2 border-t border-white/10 flex items-center justify-between gap-2">
                   <div className="flex items-center gap-1.5 text-[11px] text-zinc-400">
                     <span className="w-2 h-2 rounded-full bg-[#25D366]" />
-                    <span className="truncate">In Stock • Lekki Hub</span>
+                    <span>In Stock • Lekki Hub</span>
                   </div>
 
-                  <div className="flex items-center gap-2 shrink-0">
-                    <button
-                      onClick={handleHeroQuickAdd}
-                      className={`px-4 py-2 rounded-xl font-extrabold text-xs uppercase tracking-wider transition-all flex items-center gap-1.5 cursor-pointer active:scale-95 shadow-md ${
-                        added
-                          ? 'bg-emerald-500 text-white'
-                          : 'bg-[#E04F16] hover:bg-[#C83E0A] text-white'
-                      }`}
-                    >
-                      {added ? (
-                        <>
-                          <Check className="w-3.5 h-3.5 stroke-[3]" />
-                          <span>Added!</span>
-                        </>
-                      ) : (
-                        <>
-                          <span>Add to Bag</span>
-                        </>
-                      )}
-                    </button>
-                  </div>
+                  <button
+                    onClick={handleHeroQuickAdd}
+                    className={`px-3.5 py-1.5 rounded-xl font-extrabold text-xs uppercase tracking-wider transition-all flex items-center gap-1.5 cursor-pointer active:scale-95 shadow-md ${
+                      added
+                        ? 'bg-emerald-500 text-white'
+                        : 'bg-[#E04F16] hover:bg-[#C83E0A] text-white'
+                    }`}
+                  >
+                    {added ? (
+                      <>
+                        <Check className="w-3.5 h-3.5 stroke-[3]" />
+                        <span>Added!</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>Add to Bag</span>
+                      </>
+                    )}
+                  </button>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Bento Value Proposition Strip */}
-        <div className="relative z-10 mt-8 pt-6 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 text-[#E04F16]">
-              <Utensils className="w-5 h-5" />
-            </div>
-            <div>
-              <p className="font-extrabold text-xs sm:text-sm text-white">Kitchen & House Wares</p>
-              <p className="text-[11px] text-zinc-400">Pots, pans, blenders, toasters & cutlery</p>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 text-[#10B981]">
-              <Smile className="w-5 h-5" />
-            </div>
-            <div>
-              <p className="font-extrabold text-xs sm:text-sm text-white">Children Wares</p>
-              <p className="text-[11px] text-zinc-400">BPA-free suction plates & feeding sets</p>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 text-[#25D366]">
-              <Truck className="w-5 h-5" />
-            </div>
-            <div>
-              <p className="font-extrabold text-xs sm:text-sm text-white">Lagos Same-Day Dispatch</p>
-              <p className="text-[11px] text-zinc-400">Express delivery within 2–4 hours</p>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 text-amber-400">
-              <RotateCcw className="w-5 h-5" />
-            </div>
-            <div>
-              <p className="font-extrabold text-xs sm:text-sm text-white">Pay On Delivery</p>
-              <p className="text-[11px] text-zinc-400">Cash or bank transfer on arrival</p>
             </div>
           </div>
         </div>

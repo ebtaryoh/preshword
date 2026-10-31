@@ -1,69 +1,77 @@
 import React from 'react';
 import {
   ArrowRight,
-  UtensilsCrossed,
   Sparkles,
-  Flame,
   ShieldCheck,
   Zap,
-  Clock,
-  Shield,
   Truck,
-  CreditCard,
+  RotateCcw,
   MessageCircle,
-  Smile,
   CheckCircle2,
-  Layers
+  Layers,
+  HeartHandshake
 } from 'lucide-react';
-import { categories, products } from '../data/products';
+import { WHATSAPP_NUMBER } from '../utils/whatsapp';
 
 export default function CategoryGrid({ onSelectCategory, activeCategory }) {
-  const primaryBentoCategories = [
+  const departments = [
     {
       id: 'cookware',
       name: 'Kitchen Wares',
-      tagline: 'Cookware & Pots',
-      subtitle: '5 Pieces Ready',
-      description: 'Sol-gel non-stick frying pans, enameled Dutch ovens & multi-tier steamer pots.',
+      tagline: 'Cookware, Pots & Steamers',
+      countLabel: '5 Pieces Ready',
+      description:
+        'Sol-gel non-stick frying pans, enameled cast iron Dutch ovens & 3-tier stainless steamers.',
       image: '/images/product-cookware-set.jpg',
-      badge: 'Sol-Gel Cookware',
-      accent: '#E04F16',
-      icon: '🍳'
+      badge: 'Sol-Gel Non-Toxic',
+      features: ['Zero PTFE/PFOA', 'Induction Ready', 'Stay-Cool Handles'],
+      accent: '#E04F16'
     },
     {
       id: 'appliances',
       name: 'House Wares & Appliances',
-      tagline: 'Blenders & Toasters',
-      subtitle: '3 Pieces Ready',
-      description: '1500W commercial vortex blenders, digital smart toasters & electric yam pounders.',
+      tagline: 'Blenders, Toasters & Small Appliances',
+      countLabel: '3 Pieces Ready',
+      description:
+        '1500W commercial vortex blenders, digital smart toasters & high-torque food processors.',
       image: '/images/product-smart-toaster.jpg',
-      badge: 'Smart Appliances',
-      accent: '#0284C7',
-      icon: '⚡'
+      badge: 'Commercial 1500W',
+      features: ['Japanese Blades', 'LED Countdown', '2-Year Warranty'],
+      accent: '#0284C7'
     },
     {
       id: 'utensils',
       name: 'Utensils & Cutlery',
-      tagline: 'Luxury Dining Flatware',
-      subtitle: '3 Pieces Ready',
-      description: '24-piece satin gold & matte black cutlery sets, German steel knives & beechwood tools.',
+      tagline: 'Luxury Dining Flatware & Prep',
+      countLabel: '3 Pieces Ready',
+      description:
+        '24-piece satin gold & matte black cutlery sets, German steel chef knives & beechwood tools.',
       image: '/images/product-luxury-cutlery.jpg',
-      badge: '18/10 Cutlery',
-      accent: '#D97706',
-      icon: '🍴'
+      badge: '18/10 Stainless Steel',
+      features: ['Satin Gold Finish', 'Gift Presentation Box', 'Rust Proof'],
+      accent: '#D97706'
     },
     {
       id: 'kids',
       name: 'Children Wares',
-      tagline: 'Kids Feeding Essentials',
-      subtitle: '2 Pieces Ready',
-      description: '100% BPA-free food-grade silicone suction plates, toddler straw cups & safe cutlery.',
+      tagline: 'Eco Feeding & Tableware',
+      countLabel: '2 Pieces Ready',
+      description:
+        '100% BPA-free food-grade silicone suction plates, toddler straw cups & gentle ergonomic cutlery.',
       image: '/images/product-children-tableware.jpg',
-      badge: 'BPA-Free Kids',
-      accent: '#10B981',
-      icon: '👶'
+      badge: 'BPA-Free Food Grade',
+      features: ['Strong Suction Base', 'Drop-Proof Silicone', 'Dishwasher Safe'],
+      accent: '#10B981'
     }
   ];
+
+  const handleCardClick = (deptId) => {
+    onSelectCategory(deptId);
+    const catalogElement = document.getElementById('shop-catalog');
+    if (catalogElement) {
+      catalogElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <section className="py-8 sm:py-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -73,14 +81,14 @@ export default function CategoryGrid({ onSelectCategory, activeCategory }) {
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FFF7ED] border border-[#E04F16]/20 mb-2.5">
             <Layers className="w-3.5 h-3.5 text-[#E04F16]" />
             <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#E04F16]">
-              CURATED CATEGORIES
+              CURATED DEPARTMENTS
             </span>
           </div>
           <h2 className="text-2xl sm:text-4xl font-extrabold text-[#141312] tracking-tight">
             Explore by Department
           </h2>
-          <p className="text-xs sm:text-sm text-zinc-500 mt-1 max-w-md">
-            Everything your home needs — from stovetop cookware and small appliances to luxury cutlery and children wares.
+          <p className="text-xs sm:text-sm text-zinc-500 mt-1 max-w-lg">
+            High-grade kitchen essentials, commercial house wares, dining flatware, and safe children wares curated for your home.
           </p>
         </div>
 
@@ -92,77 +100,85 @@ export default function CategoryGrid({ onSelectCategory, activeCategory }) {
           }}
           className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white border border-[#E8E6E1] hover:border-zinc-400 font-mono text-xs font-bold text-[#141312] hover:bg-[#141312] hover:text-white transition-all shadow-2xs group self-start sm:self-auto cursor-pointer"
         >
-          <span>VIEW FULL CATALOG (14 PIECES)</span>
+          <span>VIEW FULL CATALOG (14 ITEMS)</span>
           <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
         </button>
       </div>
 
-      {/* 4-Bento Grid with High-Impact Imagery */}
+      {/* 4 Full-Bleed Visual Department Bento Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
-        {primaryBentoCategories.map((item) => {
-          const isSelected = activeCategory === item.id;
+        {departments.map((dept) => {
+          const isSelected = activeCategory === dept.id;
           return (
             <div
-              key={item.id}
-              onClick={() => {
-                onSelectCategory(item.id);
-                const el = document.getElementById('shop-catalog');
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className={`group relative rounded-3xl p-4 sm:p-5 bg-white border cursor-pointer transition-all duration-300 flex flex-col justify-between overflow-hidden shadow-2xs hover:shadow-xl ${
+              key={dept.id}
+              onClick={() => handleCardClick(dept.id)}
+              className={`group relative rounded-3xl p-4 sm:p-5 bg-white border cursor-pointer transition-all duration-300 flex flex-col justify-between overflow-hidden shadow-2xs hover:shadow-xl hover:-translate-y-1 ${
                 isSelected
-                  ? 'border-[#E04F16] ring-2 ring-[#E04F16]/20 shadow-md'
+                  ? 'border-[#E04F16] ring-2 ring-[#E04F16]/25 shadow-md'
                   : 'border-[#E8E6E1] hover:border-zinc-400'
               }`}
             >
               <div>
-                {/* Large High-Impact Image Showcase */}
+                {/* Full-Bleed Visual Image Container */}
                 <div className="relative aspect-[16/11] sm:aspect-[4/3] w-full rounded-2xl overflow-hidden bg-[#F5F3EF] mb-4">
                   <img
-                    src={item.image}
-                    alt={item.name}
-                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-108"
+                    src={dept.image}
+                    alt={dept.name}
+                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-106"
                     loading="lazy"
                   />
 
-                  {/* Gradient Depth Overlay */}
+                  {/* Gradient Depth Vignette */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
 
-                  {/* Top Badge: Department Badge */}
-                  <div className="absolute top-2.5 left-2.5 flex items-center gap-1.5 z-10">
+                  {/* Top Quality Badge */}
+                  <div className="absolute top-2.5 left-2.5 z-10">
                     <span
                       className="px-2.5 py-1 rounded-full text-white font-mono font-bold text-[10px] tracking-wider uppercase shadow-md backdrop-blur-md"
-                      style={{ backgroundColor: `${item.accent}EE` }}
+                      style={{ backgroundColor: `${dept.accent}EE` }}
                     >
-                      {item.badge}
+                      {dept.badge}
                     </span>
                   </div>
 
-                  {/* Bottom Image Micro-Pill: Piece Count */}
+                  {/* Bottom Item Count Pill */}
                   <div className="absolute bottom-2.5 left-2.5 z-10">
-                    <span className="px-2.5 py-0.5 rounded-full bg-black/70 backdrop-blur-md text-white font-mono text-[10px] font-bold">
-                      {item.subtitle}
+                    <span className="px-2.5 py-0.5 rounded-full bg-black/75 backdrop-blur-md text-white font-mono text-[10px] font-bold">
+                      {dept.countLabel}
                     </span>
                   </div>
                 </div>
 
                 {/* Card Title & Description */}
                 <h3 className="font-extrabold text-lg text-[#141312] tracking-tight group-hover:text-[#E04F16] transition-colors leading-snug">
-                  {item.name}
+                  {dept.name}
                 </h3>
                 <p className="text-xs text-zinc-500 font-normal mt-1.5 leading-relaxed line-clamp-2">
-                  {item.description}
+                  {dept.description}
                 </p>
+
+                {/* Feature Chips */}
+                <div className="mt-3 flex flex-wrap gap-1.5">
+                  {dept.features.map((feat, idx) => (
+                    <span
+                      key={idx}
+                      className="inline-block px-2 py-0.5 rounded-md bg-[#F5F3EF] text-[10px] font-mono font-medium text-zinc-600"
+                    >
+                      {feat}
+                    </span>
+                  ))}
+                </div>
               </div>
 
-              {/* Bottom Action Footer */}
+              {/* Bottom Card Action Footer */}
               <div className="mt-4 pt-3 border-t border-zinc-100 flex items-center justify-between">
-                <span className="text-[11px] font-mono font-bold text-zinc-400 flex items-center gap-1">
+                <span className="text-[11px] font-mono font-bold text-zinc-400 flex items-center gap-1.5">
                   <span
-                    className="w-1.5 h-1.5 rounded-full"
-                    style={{ backgroundColor: item.accent }}
+                    className="w-2 h-2 rounded-full"
+                    style={{ backgroundColor: dept.accent }}
                   />
-                  <span>In Stock</span>
+                  <span>In Stock • Lekki</span>
                 </span>
 
                 <span className="inline-flex items-center gap-1 text-xs font-bold text-[#E04F16] group-hover:translate-x-1 transition-transform">
@@ -175,9 +191,9 @@ export default function CategoryGrid({ onSelectCategory, activeCategory }) {
         })}
       </div>
 
-      {/* Trust & Experience Badges Strip (Redesigned as 4 Luxury Feature Tiles) */}
+      {/* Trust & Delivery Assurance Strip (4 Luxury Feature Tiles) */}
       <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4">
-        {/* Tile 1: Lagos Dispatch */}
+        {/* Tile 1: Lagos Same-Day Dispatch */}
         <div className="p-4 rounded-2xl bg-white border border-[#E8E6E1] shadow-2xs hover:shadow-sm hover:border-zinc-300 transition-all flex items-start gap-3.5">
           <div className="w-11 h-11 rounded-2xl bg-[#FFF7ED] text-[#E04F16] flex items-center justify-center shrink-0 border border-[#E04F16]/15">
             <Zap className="w-5 h-5" />
@@ -198,7 +214,7 @@ export default function CategoryGrid({ onSelectCategory, activeCategory }) {
         {/* Tile 2: Pay on Delivery */}
         <div className="p-4 rounded-2xl bg-white border border-[#E8E6E1] shadow-2xs hover:shadow-sm hover:border-zinc-300 transition-all flex items-start gap-3.5">
           <div className="w-11 h-11 rounded-2xl bg-[#F0FDF4] text-emerald-600 flex items-center justify-center shrink-0 border border-emerald-500/15">
-            <CreditCard className="w-5 h-5" />
+            <RotateCcw className="w-5 h-5" />
           </div>
           <div>
             <div className="flex items-center gap-1.5 mb-0.5">
@@ -208,46 +224,53 @@ export default function CategoryGrid({ onSelectCategory, activeCategory }) {
               </span>
             </div>
             <p className="text-xs text-zinc-500 leading-snug">
-              Inspect your wares at your door, then pay by card, transfer or cash.
+              Inspect your items upon arrival, then pay cash or bank transfer.
             </p>
           </div>
         </div>
 
-        {/* Tile 3: 100% Non-Toxic */}
+        {/* Tile 3: 100% Non-Toxic Quality */}
         <div className="p-4 rounded-2xl bg-white border border-[#E8E6E1] shadow-2xs hover:shadow-sm hover:border-zinc-300 transition-all flex items-start gap-3.5">
-          <div className="w-11 h-11 rounded-2xl bg-[#FFFBEB] text-amber-600 flex items-center justify-center shrink-0 border border-amber-500/15">
+          <div className="w-11 h-11 rounded-2xl bg-[#FEF3C7] text-amber-600 flex items-center justify-center shrink-0 border border-amber-500/15">
             <ShieldCheck className="w-5 h-5" />
           </div>
           <div>
             <div className="flex items-center gap-1.5 mb-0.5">
-              <span className="font-extrabold text-sm text-[#141312]">Non-Toxic & Safe</span>
+              <span className="font-extrabold text-sm text-[#141312]">100% Food-Grade</span>
               <span className="px-1.5 py-0.2 rounded bg-amber-100 text-amber-800 text-[9px] font-mono font-bold uppercase">
                 Certified
               </span>
             </div>
             <p className="text-xs text-zinc-500 leading-snug">
-              Sol-Gel mineral ceramic, 18/10 steel & 100% BPA-free silicone.
+              Sol-Gel ceramic, BPA-free silicone, and 18/10 surgical steel.
             </p>
           </div>
         </div>
 
-        {/* Tile 4: WhatsApp Support */}
-        <div className="p-4 rounded-2xl bg-white border border-[#E8E6E1] shadow-2xs hover:shadow-sm hover:border-zinc-300 transition-all flex items-start gap-3.5">
-          <div className="w-11 h-11 rounded-2xl bg-[#F0FDF4] text-[#25D366] flex items-center justify-center shrink-0 border border-[#25D366]/20">
-            <MessageCircle className="w-5 h-5 fill-current" />
+        {/* Tile 4: WhatsApp Live Concierge */}
+        <a
+          href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+            'Hello Preshword Living! 👋 I have a question about your kitchen wares and house essentials. Can you assist me?'
+          )}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="p-4 rounded-2xl bg-white border border-[#E8E6E1] hover:border-[#25D366] shadow-2xs hover:shadow-md transition-all flex items-start gap-3.5 group"
+        >
+          <div className="w-11 h-11 rounded-2xl bg-[#DCFCE7] text-[#25D366] flex items-center justify-center shrink-0 border border-[#25D366]/25 group-hover:scale-105 transition-transform">
+            <MessageCircle className="w-5 h-5 fill-[#25D366] text-white" />
           </div>
           <div>
             <div className="flex items-center gap-1.5 mb-0.5">
-              <span className="font-extrabold text-sm text-[#141312]">WhatsApp Live</span>
-              <span className="px-1.5 py-0.2 rounded bg-[#25D366]/15 text-[#128C7E] text-[9px] font-mono font-bold uppercase">
-                Active Hub
+              <span className="font-extrabold text-sm text-[#141312] group-hover:text-[#25D366] transition-colors">
+                WhatsApp Concierge
               </span>
+              <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse" />
             </div>
             <p className="text-xs text-zinc-500 leading-snug">
-              Instant order confirmation & tracking on +234 913 742 1838.
+              Order assistance, custom sets & real-time dispatch tracking.
             </p>
           </div>
-        </div>
+        </a>
       </div>
     </section>
   );
