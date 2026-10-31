@@ -10,7 +10,7 @@ const housewaresReviews = [
     purchasedItem: "5-Piece BPA-Free Silicone Kids Tableware",
     rating: 5,
     text: "The suction on this children's plate is practically unbreakable on our dining table high chair. My 2-year-old cannot fling food across the room anymore. Dishwasher-safe and completely odor-free.",
-    avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop",
+    avatar: "/images/avatar-nkem-ekwueme.jpg",
     verified: true,
     helpfulCount: 48,
     date: "2 days ago"
@@ -23,7 +23,7 @@ const housewaresReviews = [
     purchasedItem: "1500W Commercial Vortex Blender & Smart Toaster",
     rating: 5,
     text: "The 1500W blender pulverized soaked peeled beans for akara into silk in under 30 seconds. No burning motor smell, no smoke. The toaster's LED countdown and even golden browning are perfection.",
-    avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&h=150&fit=crop",
+    avatar: "/images/avatar-tunde-balogun.jpg",
     verified: true,
     helpfulCount: 52,
     date: "5 days ago"
@@ -36,7 +36,7 @@ const housewaresReviews = [
     purchasedItem: "4-Piece Sol-Gel Ceramic Cookware Set",
     rating: 5,
     text: "I was skeptical about non-stick ceramic on Nigerian high heat, but this Sol-Gel set is unbelievable. Cooked smokeless party jollof and fried plantains with zero sticking and wiped clean with just paper towels.",
-    avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop",
+    avatar: "/images/avatar-chidinma-okafor.jpg",
     verified: true,
     helpfulCount: 64,
     date: "1 week ago"
@@ -49,7 +49,7 @@ const housewaresReviews = [
     purchasedItem: "24-Piece Satin Gold & Black Cutlery Set",
     rating: 5,
     text: "Substantial 18/10 stainless steel weight in hand — not flimsy at all. The satin gold plating does not peel or scratch, and the presentation case makes it feel like royalty. Worth every naira.",
-    avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop",
+    avatar: "/images/avatar-amina-bello.jpg",
     verified: true,
     helpfulCount: 39,
     date: "2 weeks ago"
@@ -62,7 +62,7 @@ const housewaresReviews = [
     purchasedItem: "3-Tier 304 Stainless Steamer Pot",
     rating: 5,
     text: "Steamed three full tiers of moimoi pouches simultaneously. Even steam circulation throughout all racks, sturdy heat-resistant handles, and zero steam leakage from the tempered glass lid.",
-    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop",
+    avatar: "/images/avatar-femi-adeleke.jpg",
     verified: true,
     helpfulCount: 31,
     date: "3 weeks ago"
@@ -70,12 +70,12 @@ const housewaresReviews = [
   {
     id: 6,
     name: "Mrs. Ngozi Eze",
-    role: "Home Baker & Restaurateur",
+    role: "Home Baker & Caterer",
     city: "Enugu & Lagos",
     purchasedItem: "Cast Iron Enameled Dutch Oven Pot",
     rating: 5,
     text: "Heat retention is monstrous. Made slow-cooked beef stew and artisanal sourdough bread. The heavy enamel lid seals all moisture inside. Arrived in Lagos within 3 hours via rider dispatch.",
-    avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop",
+    avatar: "/images/avatar-ngozi-eze.jpg",
     verified: true,
     helpfulCount: 44,
     date: "1 month ago"
@@ -203,13 +203,13 @@ export default function ReviewsSection() {
                 </p>
               </div>
 
-              {/* Author Footer */}
+              {/* Author Footer with Authentic Local Nigerian Photo */}
               <div className="mt-6 pt-5 border-t border-zinc-100 flex items-center justify-between">
                 <div className="flex items-center gap-3 min-w-0">
                   <img
                     src={rev.avatar}
                     alt={rev.name}
-                    className="w-10 h-10 rounded-full object-cover ring-2 ring-black/[0.04] shrink-0"
+                    className="w-11 h-11 rounded-full object-cover ring-2 ring-black/[0.06] shrink-0 bg-[#F5F3EF]"
                     loading="lazy"
                   />
                   <div className="min-w-0">
@@ -218,7 +218,7 @@ export default function ReviewsSection() {
                         {rev.name}
                       </span>
                       {rev.verified && (
-                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" title="Verified Buyer" />
+                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" title="Verified Nigerian Buyer" />
                       )}
                     </div>
                     <span className="text-[11px] text-zinc-400 font-mono block truncate">

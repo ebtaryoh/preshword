@@ -31,7 +31,7 @@ export default function ProductCard({
         origin: { x, y },
         colors: ['#E04F16', '#141312', '#FFFFFF']
       });
-    } catch {}
+    } catch { }
 
     setTimeout(() => setJustAdded(false), 1400);
   };
@@ -79,11 +79,10 @@ export default function ProductCard({
               e.stopPropagation();
               onToggleWishlist(product.id);
             }}
-            className={`absolute top-2 right-2 w-8 h-8 rounded-full flex items-center justify-center backdrop-blur-md transition-all active:scale-90 z-10 ${
-              isWished
+            className={`absolute top-2 right-2 w-8 h-8 rounded-full flex items-center justify-center backdrop-blur-md transition-all active:scale-90 z-10 ${isWished
                 ? 'bg-[#E04F16] text-white shadow-2xs'
                 : 'bg-white/85 text-zinc-500 hover:bg-white hover:text-[#141312] shadow-2xs'
-            }`}
+              }`}
             aria-label="Wishlist"
           >
             <Heart className={`w-3.5 h-3.5 ${isWished ? 'fill-current' : ''}`} />
@@ -137,11 +136,10 @@ export default function ProductCard({
           {/* Add to Cart Plus Button */}
           <button
             onClick={handleAdd}
-            className={`w-9 h-9 rounded-full flex items-center justify-center transition-all active:scale-90 cursor-pointer shadow-sm shrink-0 ${
-              justAdded
+            className={`w-9 h-9 rounded-full flex items-center justify-center transition-all active:scale-90 cursor-pointer shadow-sm shrink-0 ${justAdded
                 ? 'bg-emerald-600 text-white'
                 : 'bg-[#141312] hover:bg-[#E04F16] text-white'
-            }`}
+              }`}
             aria-label={`Add ${product.name} to cart`}
             title="Add to cart"
           >

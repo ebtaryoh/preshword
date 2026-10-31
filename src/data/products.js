@@ -3,7 +3,7 @@ export const categories = [
     id: "cookware", 
     name: "Kitchen Wares & Cookware", 
     tagline: "Pots, Pans & Dutch Ovens", 
-    count: 5, 
+    count: 6, 
     image: "/images/product-cookware-set.jpg",
     color: "from-amber-500/20 to-orange-500/10"
   },
@@ -11,7 +11,7 @@ export const categories = [
     id: "appliances", 
     name: "House Wares & Appliances", 
     tagline: "Blenders, Toasters & Processors", 
-    count: 3, 
+    count: 5, 
     image: "/images/product-smart-toaster.jpg",
     color: "from-blue-500/20 to-cyan-500/10"
   },
@@ -19,7 +19,7 @@ export const categories = [
     id: "utensils", 
     name: "Utensils & Luxury Cutlery", 
     tagline: "24pc Cutlery & Chef Knives", 
-    count: 3, 
+    count: 4, 
     image: "/images/product-luxury-cutlery.jpg",
     color: "from-lime-500/20 to-emerald-500/10"
   },
@@ -387,6 +387,153 @@ export const products = [
       capacity: "3.8 Liters", 
       base: "Heat-diffusing thick base for even simmer", 
       handles: "Integrated stay-cool ceramic side handles" 
+    }, 
+    inStock: true, 
+    isNew: false, 
+    onSale: true 
+  },
+  { 
+    id: 15, 
+    name: "Digital Touch Air Fryer & Convection Roaster (6.5L)", 
+    category: "appliances", 
+    price: 78000, 
+    originalPrice: 95000, 
+    badge: "New Drop",
+    rating: 4.9,
+    reviews: 112,
+    image: "/images/product-digital-airfryer.jpg", 
+    gallery: [
+      "/images/product-digital-airfryer.jpg"
+    ], 
+    description: "High-capacity 6.5L rapid 360° cyclonic air circulation with digital LED one-touch presets. Roasts whole chicken, crisps plantains, fries fish, and bakes with 85% less oil and zero preheating delay.", 
+    specs: { 
+      capacity: "6.5 Liters Family Capacity", 
+      power: "1800W Rapid Cyclonic Vortex Heat", 
+      control: "Smart LED Touch Glass Display", 
+      coating: "Food-Grade Sol-Gel Ceramic (PTFE-Free)",
+      warranty: "Official 2-Year Replacement Warranty"
+    }, 
+    inStock: true, 
+    isNew: true, 
+    onSale: true 
+  },
+  { 
+    id: 16, 
+    name: "Double-Wall Cordless Electric Kettle 1.8L (Digital LED)", 
+    category: "appliances", 
+    price: 32000, 
+    originalPrice: 42000, 
+    badge: "Bestseller",
+    rating: 5.0,
+    reviews: 145,
+    image: "/images/product-stainless-kettle.jpg", 
+    gallery: [
+      "/images/product-stainless-kettle.jpg"
+    ], 
+    description: "Minimalist double-wall insulated cordless electric kettle with real-time digital temperature LED display. Seamless 304 food-grade stainless inner pot, anti-scald cool-touch body, and British Strix thermostat.", 
+    specs: { 
+      capacity: "1.8 Liters", 
+      power: "1800W Rapid Boil (Boils in 3 mins)", 
+      steel: "Seamless 304 Food-Grade Stainless Steel", 
+      safety: "Auto Shut-Off & Boil-Dry Protection",
+      exterior: "Cool-Touch Double-Wall Thermal Body"
+    }, 
+    inStock: true, 
+    isNew: false, 
+    onSale: true 
+  },
+  { 
+    id: 17, 
+    name: "4-Piece Eco Silicone Baby Suction Bowls & Soft Spoons Set", 
+    category: "kids", 
+    price: 22000, 
+    originalPrice: 28000, 
+    badge: "Kids Favorite",
+    rating: 4.9,
+    reviews: 98,
+    image: "/images/product-kids-suction-bowls.jpg", 
+    gallery: [
+      "/images/product-kids-suction-bowls.jpg"
+    ], 
+    description: "100% food-grade platinum silicone suction bowls with curved spill-proof rims and soft gum-friendly baby training spoons. Engineered vacuum suction base grips firmly to high chairs and smooth dining surfaces.", 
+    specs: { 
+      material: "100% Platinum Food-Grade Silicone", 
+      pieces: "4 (2 Suction Bowls + 2 Soft Gum Training Spoons)", 
+      safety: "Zero BPA, PVC, Lead or Phthalates", 
+      care: "Microwave, Freezer & Dishwasher Safe (-40°C to 220°C)",
+      suction: "Engineered High-Vacuum Anti-Tip Base"
+    }, 
+    inStock: true, 
+    isNew: true, 
+    onSale: false 
+  },
+  { 
+    id: 18, 
+    name: "10-Piece Heat-Resistant Silicone & Acacia Wood Utensil Set", 
+    category: "utensils", 
+    price: 28000, 
+    originalPrice: 36000, 
+    badge: "Trending",
+    rating: 4.8,
+    reviews: 134,
+    image: "/images/product-silicone-utensils-set.jpg", 
+    gallery: [
+      "/images/product-silicone-utensils-set.jpg"
+    ], 
+    description: "Complete 10-piece culinary tool set featuring non-scratch food-grade silicone heads heat-resistant up to 230°C and solid ergonomic acacia wood handles. Includes soup ladle, slotted turner, whisk, tongs, and ceramic countertop crock.", 
+    specs: { 
+      pieces: "10 Tools + Heavy Ceramic Storage Crock", 
+      heatResistance: "Up to 230°C (450°F) No Melting or Warping", 
+      handles: "Natural Solid Acacia Hardwood with Hanging Loops", 
+      silicone: "100% Non-Toxic Non-Scratch Food Grade"
+    }, 
+    inStock: true, 
+    isNew: false, 
+    onSale: true 
+  },
+  { 
+    id: 19, 
+    name: "3-Piece Luxury Insulated Thermal Food Warmer Serving Dishes", 
+    category: "tableware", 
+    price: 54000, 
+    originalPrice: 68000, 
+    badge: "Family Pick",
+    rating: 4.9,
+    reviews: 176,
+    image: "/images/product-thermal-food-warmers.jpg", 
+    gallery: [
+      "/images/product-thermal-food-warmers.jpg"
+    ], 
+    description: "Double-wall polyurethane insulated hot pots with mirror-polished 304 stainless steel interior and satin gold handles. Keeps jollof rice, soups, stews, and swallow piping hot for up to 6 hours on Sunday family tables.", 
+    specs: { 
+      capacities: "1.5L, 2.5L & 3.5L Casseroles (Set of 3)", 
+      insulation: "High-Density Double-Wall Thermal Foam", 
+      thermalRetain: "Keeps Food Hot for 6h / Cold for 8h", 
+      handles: "Ergonomic Stay-Cool Satin Gold Side Handles"
+    }, 
+    inStock: true, 
+    isNew: true, 
+    onSale: true 
+  },
+  { 
+    id: 20, 
+    name: "32cm Deep Non-Stick Granitestone Wok Pan with Tempered Lid", 
+    category: "cookware", 
+    price: 42000, 
+    originalPrice: 52000, 
+    badge: "Chef Choice",
+    rating: 4.9,
+    reviews: 142,
+    image: "/images/product-granite-wok.jpg", 
+    gallery: [
+      "/images/product-granite-wok.jpg"
+    ], 
+    description: "Heavy-gauge forged aluminum wok pan with German 5-layer mineral granite non-stick coating. Deep curved sidewalls ideal for smokeless stir-fries, fried rice, and vegetable medleys. Universal induction base with cool-touch woodgrain handle.", 
+    specs: { 
+      size: "32cm (12.6-inch) Deep Wok", 
+      coating: "5-Layer German Granite Mineral Non-Stick", 
+      lid: "Explosion-Proof Tempered Glass with Steam Vent", 
+      compatibility: "Induction, Gas, Electric, Ceramic, Halogen"
     }, 
     inStock: true, 
     isNew: false, 

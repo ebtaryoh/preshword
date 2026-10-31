@@ -38,7 +38,7 @@ I would like to place an order:
 ${itemsList}
 ────────────────────
 • Items Subtotal: *${formatPrice(subtotal)}*
-${discountAmount > 0 ? `• VIP Discount: *-${formatPrice(discountAmount)}*\n` : ''}• Delivery: *${deliveryFee === 0 ? 'FREE (Lagos)' : formatPrice(deliveryFee)}*
+${discountAmount > 0 ? `• VIP Discount: *-${formatPrice(discountAmount)}*\n` : ''}• Delivery: *${formatPrice(deliveryFee)} (Lagos Dispatch)*
 💰 *TOTAL PAYABLE: ${formatPrice(total)}*
 
 📍 *DELIVERY DETAILS:*

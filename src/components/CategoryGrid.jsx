@@ -19,9 +19,9 @@ export default function CategoryGrid({ onSelectCategory, activeCategory }) {
       id: 'cookware',
       name: 'Kitchen Wares',
       tagline: 'Cookware, Pots & Steamers',
-      countLabel: '5 Pieces Ready',
+      countLabel: '6 Pieces Ready',
       description:
-        'Sol-gel non-stick frying pans, enameled cast iron Dutch ovens & 3-tier stainless steamers.',
+        'Sol-gel non-stick frying pans, enameled cast iron Dutch ovens, deep woks & 3-tier steamers.',
       image: '/images/product-cookware-set.jpg',
       badge: 'Sol-Gel Non-Toxic',
       features: ['Zero PTFE/PFOA', 'Induction Ready', 'Stay-Cool Handles'],
@@ -30,10 +30,10 @@ export default function CategoryGrid({ onSelectCategory, activeCategory }) {
     {
       id: 'appliances',
       name: 'House Wares & Appliances',
-      tagline: 'Blenders, Toasters & Small Appliances',
-      countLabel: '3 Pieces Ready',
+      tagline: 'Blenders, Toasters & Air Fryers',
+      countLabel: '5 Pieces Ready',
       description:
-        '1500W commercial vortex blenders, digital smart toasters & high-torque food processors.',
+        '1500W commercial vortex blenders, digital smart toasters, 6.5L air fryers & electric kettles.',
       image: '/images/product-smart-toaster.jpg',
       badge: 'Commercial 1500W',
       features: ['Japanese Blades', 'LED Countdown', '2-Year Warranty'],
@@ -43,9 +43,9 @@ export default function CategoryGrid({ onSelectCategory, activeCategory }) {
       id: 'utensils',
       name: 'Utensils & Cutlery',
       tagline: 'Luxury Dining Flatware & Prep',
-      countLabel: '3 Pieces Ready',
+      countLabel: '4 Pieces Ready',
       description:
-        '24-piece satin gold & matte black cutlery sets, German steel chef knives & beechwood tools.',
+        '24-piece satin gold cutlery sets, 10-piece acacia wood utensil sets & German steel chef knives.',
       image: '/images/product-luxury-cutlery.jpg',
       badge: '18/10 Stainless Steel',
       features: ['Satin Gold Finish', 'Gift Presentation Box', 'Rust Proof'],
@@ -100,7 +100,7 @@ export default function CategoryGrid({ onSelectCategory, activeCategory }) {
           }}
           className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white border border-[#E8E6E1] hover:border-zinc-400 font-mono text-xs font-bold text-[#141312] hover:bg-[#141312] hover:text-white transition-all shadow-2xs group self-start sm:self-auto cursor-pointer"
         >
-          <span>VIEW FULL CATALOG (14 ITEMS)</span>
+          <span>VIEW FULL CATALOG (20 PIECES)</span>
           <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
         </button>
       </div>
