@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Sparkles, Copy, Check, ArrowRight } from 'lucide-react';
 
 const messages = [
-  { text: "USE CODE 'PRESH15' FOR 15% OFF YOUR FIRST ORDER", code: "PRESH15" },
+  { text: "USE CODE 'PRESHWORLD15' FOR 15% OFF YOUR FIRST ORDER", code: "PRESHWORLD15" },
   { text: "SAME-DAY LAGOS DISPATCH • 2-YEAR WARRANTY ON ALL ITEMS", code: null },
   { text: "100% NON-TOXIC SOL-GEL MINERAL CERAMIC // ZERO PTFE", code: null },
   { text: "PAY ON DELIVERY AVAILABLE ACROSS LAGOS STATE", code: null }

@@ -75,7 +75,7 @@ export default function Navbar({
   };
 
   const whatsappInquiryUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-    'Hello Preshword Living! 👋 I am browsing your kitchen and house wares collection and would like to ask a question or place an order.'
+    'Hello Preshworld Household Essential! 👋 I am browsing your kitchen and house wares collection and would like to ask a question or place an order.'
   )}`;
 
   return (
@@ -113,10 +113,10 @@ export default function Navbar({
                 </div>
                 <div>
                   <span className="font-extrabold text-xl sm:text-2xl tracking-[-0.035em] text-[#141312] block leading-none">
-                    PRESH<span className="text-[#E04F16]">WORD</span>
+                    PRESH<span className="text-[#E04F16]">WORLD</span>
                   </span>
                   <span className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest hidden sm:block mt-0.5">
-                    KITCHEN & HOUSE WARES • LAGOS
+                    HOUSEHOLD ESSENTIAL • LAGOS
                   </span>
                 </div>
               </button>
@@ -233,9 +233,14 @@ export default function Navbar({
                   <div className="w-8 h-8 rounded-xl bg-[#141312] text-white flex items-center justify-center">
                     <UtensilsCrossed className="w-4 h-4" />
                   </div>
-                  <span className="font-extrabold text-lg text-[#141312]">
-                    PRESH<span className="text-[#E04F16]">WORD</span>
-                  </span>
+                  <div>
+                    <span className="font-extrabold text-base text-[#141312] block leading-none">
+                      PRESH<span className="text-[#E04F16]">WORLD</span>
+                    </span>
+                    <span className="text-[9px] font-bold text-zinc-500 uppercase tracking-wider block mt-0.5">
+                      HOUSEHOLD ESSENTIAL
+                    </span>
+                  </div>
                 </div>
                 <button
                   onClick={() => setMobileMenuOpen(false)}

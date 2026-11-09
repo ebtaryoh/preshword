@@ -10,7 +10,7 @@ import { WHATSAPP_NUMBER } from '../utils/whatsapp';
 
 export default function Hero({ onExplore, onSelectCategory }) {
   const whatsappInquiryUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-    'Hello Preshword Living! 👋 I am browsing your kitchen wares, appliances, utensils, and house wares collection. Please confirm availability and how soon you can dispatch to my address in Lagos.'
+    'Hello Preshworld Household Essential! 👋 I am browsing your kitchen wares, appliances, utensils, and house wares collection. Please confirm availability and how soon you can dispatch to my address in Lagos.'
   )}`;
 
   const scrollToCatalog = () => {
@@ -26,7 +26,7 @@ export default function Hero({ onExplore, onSelectCategory }) {
         {/* Full-Bleed High-Definition Editorial Background Image */}
         <img
           src="/images/hero-housewares-collection.jpg"
-          alt="Preshword Living Editorial Kitchen & House Wares"
+          alt="Preshworld Household Essential Editorial Kitchen & House Wares"
           className="absolute inset-0 w-full h-full object-cover object-center lg:object-right transition-transform duration-1000 ease-out hover:scale-102"
           loading="eager"
         />

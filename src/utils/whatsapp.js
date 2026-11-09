@@ -30,7 +30,7 @@ export function buildWhatsAppOrderUrl({
     )
     .join('\n\n');
 
-  const text = `Hello Preshword Living! 👋
+  const text = `Hello Preshworld Household Essential! 👋
 I would like to place an order:
 
 📋 *ORDER #${ref}*
@@ -59,7 +59,7 @@ Please confirm availability and dispatch schedule. Thank you!`;
 export function buildWhatsAppSingleItemUrl(product, qty = 1) {
   const lineTotal = (product?.price || 0) * qty;
 
-  const text = `Hello Preshword Living! 👋
+  const text = `Hello Preshworld Household Essential! 👋
 I would like to order:
 
 🍳 *${product?.name || 'Cookware Item'}*
@@ -77,7 +77,7 @@ Please confirm availability and how soon you can dispatch to my address. Thank y
  */
 export function buildWhatsAppBundleUrl({ items = [], bundlePrice = 0, rawTotal = 0, savings = 0 }) {
   const itemsText = items.map((it, idx) => `${idx + 1}. *${it?.name}* (${formatPrice(it?.price)})`).join('\n');
-  const text = `Hello Preshword Living! 👋
+  const text = `Hello Preshworld Household Essential! 👋
 I would like to order the *Custom 3-Piece Bundle Set* (-15% OFF):
 
 ${itemsText}

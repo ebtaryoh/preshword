@@ -10,7 +10,7 @@ export default function EditorialSection({ onExplore }) {
           <div className="lg:col-span-6">
             <div className="inline-flex items-center gap-1.5 font-mono text-[11px] font-bold uppercase tracking-widest text-[#E04F16] mb-3">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>THE PRESHWORD STANDARD</span>
+              <span>THE PRESHWORLD STANDARD</span>
             </div>
 
             <h2 className="text-3xl sm:text-5xl font-extrabold tracking-[-0.035em] text-[#141312] leading-[1.1]">
@@ -19,7 +19,7 @@ export default function EditorialSection({ onExplore }) {
             </h2>
 
             <p className="mt-4 text-zinc-600 text-sm sm:text-base leading-relaxed">
-              From commercial 1500W blenders and smart toasters to luxury dining cutlery, non-toxic cookware, and safe children's tableware — PRESHWORD equips your home with durable, functional, and aesthetic wares.
+              From commercial 1500W blenders and smart toasters to luxury dining cutlery, non-toxic cookware, and safe children's tableware — Preshworld Household Essential equips your home with durable, functional, and aesthetic wares.
             </p>
 
             {/* Quality Standard Badges */}

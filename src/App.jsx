@@ -22,7 +22,7 @@ export default function App() {
   // Local storage state
   const [cart, setCart] = useState(() => {
     try {
-      const saved = localStorage.getItem('preshword_cart_v2');
+      const saved = localStorage.getItem('preshworld_cart_v2') || localStorage.getItem('preshword_cart_v2');
       return saved ? JSON.parse(saved) : [{ id: 1, qty: 1 }];
     } catch {
       return [{ id: 1, qty: 1 }];
@@ -31,7 +31,7 @@ export default function App() {
 
   const [wishlist, setWishlist] = useState(() => {
     try {
-      const saved = localStorage.getItem('preshword_wishlist_v2');
+      const saved = localStorage.getItem('preshworld_wishlist_v2') || localStorage.getItem('preshword_wishlist_v2');
       return saved ? JSON.parse(saved) : [2, 11];
     } catch {
       return [2, 11];
@@ -52,13 +52,13 @@ export default function App() {
   // Sync to local storage
   useEffect(() => {
     try {
-      localStorage.setItem('preshword_cart_v2', JSON.stringify(cart));
+      localStorage.setItem('preshworld_cart_v2', JSON.stringify(cart));
     } catch { }
   }, [cart]);
 
   useEffect(() => {
     try {
-      localStorage.setItem('preshword_wishlist_v2', JSON.stringify(wishlist));
+      localStorage.setItem('preshworld_wishlist_v2', JSON.stringify(wishlist));
     } catch { }
   }, [wishlist]);
 

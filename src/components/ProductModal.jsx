@@ -46,7 +46,7 @@ export default function ProductModal({
         origin: { y: 0.7 },
         colors: ['#E04F16', '#25D366', '#141312']
       });
-    } catch {}
+    } catch { }
 
     setTimeout(() => {
       setAdded(false);
@@ -85,11 +85,10 @@ export default function ProductModal({
 
           <button
             onClick={() => onToggleWishlist(product.id)}
-            className={`w-9 h-9 rounded-full flex items-center justify-center transition-all cursor-pointer ${
-              isWished
+            className={`w-9 h-9 rounded-full flex items-center justify-center transition-all cursor-pointer ${isWished
                 ? 'bg-[#E04F16] text-white shadow-2xs'
                 : 'bg-[#F5F3EF] text-zinc-500 hover:text-[#141312]'
-            }`}
+              }`}
           >
             <Heart className={`w-4 h-4 ${isWished ? 'fill-current' : ''}`} />
           </button>
@@ -118,11 +117,10 @@ export default function ProductModal({
                 <button
                   key={idx}
                   onClick={() => setSelectedImg(img)}
-                  className={`w-14 h-14 rounded-xl overflow-hidden shrink-0 border-2 transition-all cursor-pointer ${
-                    selectedImg === img
+                  className={`w-14 h-14 rounded-xl overflow-hidden shrink-0 border-2 transition-all cursor-pointer ${selectedImg === img
                       ? 'border-[#E04F16] scale-95 shadow-sm'
                       : 'border-transparent opacity-60 hover:opacity-100'
-                  }`}
+                    }`}
                 >
                   <img src={img} alt="" className="w-full h-full object-cover" />
                 </button>
@@ -187,11 +185,10 @@ export default function ProductModal({
             {/* Secondary: Add to Bag */}
             <button
               onClick={handleAdd}
-              className={`w-full py-3 px-6 rounded-2xl font-bold text-xs uppercase tracking-wider transition-all border border-[#E8E6E1] flex items-center justify-center gap-2 cursor-pointer ${
-                added
+              className={`w-full py-3 px-6 rounded-2xl font-bold text-xs uppercase tracking-wider transition-all border border-[#E8E6E1] flex items-center justify-center gap-2 cursor-pointer ${added
                   ? 'bg-emerald-600 text-white border-transparent'
                   : 'bg-white hover:bg-[#F5F3EF] text-[#141312]'
-              }`}
+                }`}
             >
               {added ? (
                 <>
@@ -214,7 +211,7 @@ export default function ProductModal({
             </span>
             <div className="flex items-center justify-center gap-4 text-xs font-bold text-zinc-600">
               <a
-                href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hello%20Preshword,%20I%20have%20a%20question%20about%20${encodeURIComponent(product.name)}`}
+                href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hello%20Preshworld%20Household%20Essential,%20I%20have%20a%20question%20about%20${encodeURIComponent(product.name)}`}
                 target="_blank"
                 rel="noreferrer"
                 className="hover:text-[#25D366] flex items-center gap-1 transition-colors"

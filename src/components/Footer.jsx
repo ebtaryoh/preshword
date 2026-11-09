@@ -8,7 +8,7 @@ export default function Footer({ onSelectCategory }) {
   };
 
   const whatsappInquiryUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-    'Hello Preshword Living! 👋 I am interested in inquiring about placing an order or tracking my delivery.'
+    'Hello Preshworld Household Essential! 👋 I am interested in inquiring about placing an order or tracking my delivery.'
   )}`;
 
   return (
@@ -69,9 +69,12 @@ export default function Footer({ onSelectCategory }) {
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8 py-14 border-b border-white/10">
           {/* Brand Col */}
           <div className="col-span-2">
-            <div className="flex items-center gap-2">
-              <span className="font-extrabold text-2xl sm:text-3xl tracking-tight text-white">
-                PRESH<span className="text-[#E04F16]">WORD</span>
+            <div className="flex flex-col gap-1">
+              <span className="font-extrabold text-2xl sm:text-3xl tracking-tight text-white leading-none">
+                PRESH<span className="text-[#E04F16]">WORLD</span>
+              </span>
+              <span className="text-[11px] font-mono font-bold text-[#E04F16] uppercase tracking-wider">
+                HOUSEHOLD ESSENTIAL
               </span>
             </div>
             <p className="mt-3 text-sm text-zinc-400 max-w-sm leading-relaxed">
@@ -211,7 +214,7 @@ export default function Footer({ onSelectCategory }) {
         {/* Bottom Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-zinc-400">
           <div>
-            © {new Date().getFullYear()} PRESHWORD LIVING LTD. ALL RIGHTS RESERVED.
+            © {new Date().getFullYear()} PRESHWORLD HOUSEHOLD ESSENTIAL LTD. ALL RIGHTS RESERVED.
           </div>
 
           <div className="flex items-center gap-6">

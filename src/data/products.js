@@ -559,7 +559,7 @@ export const reviews = [
     rating: 5,
     verified: true,
     helpfulCount: 56,
-    text: "PRESHWORD completely transformed my kitchen setup. The 24-piece gold and black cutlery set looks stunning on my dining table, and the 1500W blender crushes whole beans and peppers into smooth puree in seconds!"
+    text: "Preshworld Household Essential completely transformed my kitchen setup. The 24-piece gold and black cutlery set looks stunning on my dining table, and the 1500W blender crushes whole beans and peppers into smooth puree in seconds!"
   },
   {
     id: 2,
@@ -583,6 +583,6 @@ export const reviews = [
     rating: 5,
     verified: true,
     helpfulCount: 62,
-    text: "Finding 100% food-grade BPA-free children tableware in Nigeria that is both durable and aesthetic was difficult until PRESHWORD. The suction plates stay put, and the non-toxic ceramic cookware gives me complete peace of mind."
+    text: "Finding 100% food-grade BPA-free children tableware in Nigeria that is both durable and aesthetic was difficult until Preshworld Household Essential. The suction plates stay put, and the non-toxic ceramic cookware gives me complete peace of mind."
   }
 ];

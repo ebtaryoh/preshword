@@ -62,7 +62,7 @@ export default function CommunityFeed({ onExplore }) {
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FFF7ED] border border-[#E04F16]/20 mb-3">
             <Camera className="w-3.5 h-3.5 text-[#E04F16]" />
             <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#E04F16]">
-              @PRESHWORD LIVING ON INSTAGRAM
+              @PRESHWORLD.ESSENTIALS ON INSTAGRAM
             </span>
           </div>
 
@@ -72,7 +72,7 @@ export default function CommunityFeed({ onExplore }) {
           </h2>
 
           <p className="mt-3 text-sm sm:text-base text-zinc-600 leading-relaxed max-w-lg">
-            Tag <strong className="font-mono font-bold text-[#141312]">#PreshwordKitchen</strong> or <strong className="font-mono font-bold text-[#141312]">@preshword</strong> on Instagram to be featured in our lookbook.
+            Tag <strong className="font-mono font-bold text-[#141312]">#PreshworldEssential</strong> or <strong className="font-mono font-bold text-[#141312]">@preshworld</strong> on Instagram to be featured in our lookbook.
           </p>
         </div>
 

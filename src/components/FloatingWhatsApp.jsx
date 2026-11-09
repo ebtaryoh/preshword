@@ -4,7 +4,7 @@ import { WHATSAPP_NUMBER } from '../utils/whatsapp';
 
 export default function FloatingWhatsApp() {
   const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-    "Hello Preshword Living! 👋 I am browsing your store and would like to place an order or ask a question."
+    "Hello Preshworld Household Essential! 👋 I am browsing your store and would like to place an order or ask a question."
   )}`;
 
   return (

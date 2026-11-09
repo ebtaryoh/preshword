@@ -250,7 +250,7 @@ export default function CategoryGrid({ onSelectCategory, activeCategory }) {
         {/* Tile 4: WhatsApp Live Concierge */}
         <a
           href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-            'Hello Preshword Living! 👋 I have a question about your kitchen wares and house essentials. Can you assist me?'
+            'Hello Preshworld Household Essential! 👋 I have a question about your kitchen wares and house essentials. Can you assist me?'
           )}`}
           target="_blank"
           rel="noopener noreferrer"

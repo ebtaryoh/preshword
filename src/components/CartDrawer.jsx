@@ -38,7 +38,7 @@ export default function CartDrawer({
 
   // Promo discount
   let discountAmount = 0;
-  if (appliedPromo === 'PRESH15' || appliedPromo === 'GENZ15') {
+  if (appliedPromo === 'PRESHWORLD15' || appliedPromo === 'PRESH15' || appliedPromo === 'GENZ15') {
     discountAmount = Math.round(subtotal * 0.15);
   } else if (appliedPromo === 'SUNDAY20') {
     discountAmount = Math.round(subtotal * 0.20);
@@ -49,11 +49,11 @@ export default function CartDrawer({
   const handleApplyPromo = (e) => {
     e.preventDefault();
     const code = promoInput.trim().toUpperCase();
-    if (code === 'PRESH15' || code === 'GENZ15' || code === 'SUNDAY20') {
+    if (code === 'PRESHWORLD15' || code === 'PRESH15' || code === 'GENZ15' || code === 'SUNDAY20') {
       setAppliedPromo(code);
       if (showToast) showToast(`Promo '${code}' applied (-15%)!`);
     } else {
-      if (showToast) showToast('Invalid promo code. Try "PRESH15"');
+      if (showToast) showToast('Invalid promo code. Try "PRESHWORLD15"');
     }
     setPromoInput('');
   };
