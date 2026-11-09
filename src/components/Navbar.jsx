@@ -81,11 +81,10 @@ export default function Navbar({
   return (
     <>
       <header
-        className={`sticky top-0 z-40 transition-all duration-300 ${
-          isScrolled
+        className={`sticky top-0 z-40 transition-all duration-300 ${isScrolled
             ? 'bg-[#FBF9F5]/95 backdrop-blur-2xl border-b border-[#E8E6E1] shadow-xs py-2.5'
             : 'bg-[#FBF9F5]/85 backdrop-blur-md border-b border-[#E8E6E1]/60 py-3.5 sm:py-4'
-        }`}
+          }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
@@ -130,11 +129,10 @@ export default function Navbar({
                     <button
                       key={cat.id}
                       onClick={() => handleCategoryClick(cat.id)}
-                      className={`relative px-3.5 py-1.5 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer flex items-center gap-1.5 ${
-                        isSelected
+                      className={`relative px-3.5 py-1.5 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer flex items-center gap-1.5 ${isSelected
                           ? 'bg-white text-[#141312] shadow-xs'
                           : 'text-zinc-600 hover:text-[#141312] hover:bg-white/50'
-                      }`}
+                        }`}
                     >
                       <span>{cat.label}</span>
                       {isSelected && (
@@ -274,11 +272,10 @@ export default function Navbar({
                       <button
                         key={cat.id}
                         onClick={() => handleCategoryClick(cat.id)}
-                        className={`w-full flex items-center justify-between px-3 py-2.5 rounded-2xl text-xs font-bold transition-all text-left cursor-pointer ${
-                          isSelected
+                        className={`w-full flex items-center justify-between px-3 py-2.5 rounded-2xl text-xs font-bold transition-all text-left cursor-pointer ${isSelected
                             ? 'bg-[#141312] text-white shadow-xs'
                             : 'hover:bg-[#F5F3EF] text-zinc-700'
-                        }`}
+                          }`}
                       >
                         <div className="flex items-center gap-2">
                           {isSelected && (
@@ -287,11 +284,10 @@ export default function Navbar({
                           <span>{cat.label}</span>
                         </div>
                         <span
-                          className={`font-mono text-[10px] px-2 py-0.5 rounded-full ${
-                            isSelected
+                          className={`font-mono text-[10px] px-2 py-0.5 rounded-full ${isSelected
                               ? 'bg-white/20 text-white'
                               : 'bg-zinc-100 text-zinc-500'
-                          }`}
+                            }`}
                         >
                           {cat.count}
                         </span>

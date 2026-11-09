@@ -1,7 +1,7 @@
 import { formatPrice } from './format';
 
-export const WHATSAPP_NUMBER = '2349137421838';
-export const WHATSAPP_DISPLAY = '+234 913 742 1838';
+export const WHATSAPP_NUMBER = '2347016984248';
+export const WHATSAPP_DISPLAY = '+234 701 698 4248';
 
 /**
  * Builds encoded WhatsApp URL for an entire cart order.

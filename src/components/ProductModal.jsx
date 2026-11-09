@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { X, ArrowLeft, Heart, ShoppingBag, MessageCircle, Star, Phone, Check } from 'lucide-react';
 import { formatPrice, calculateDiscount } from '../utils/format';
-import { buildWhatsAppSingleItemUrl, WHATSAPP_DISPLAY } from '../utils/whatsapp';
+import { buildWhatsAppSingleItemUrl, WHATSAPP_DISPLAY, WHATSAPP_NUMBER } from '../utils/whatsapp';
 import confetti from 'canvas-confetti';
 
 export default function ProductModal({
@@ -214,7 +214,7 @@ export default function ProductModal({
             </span>
             <div className="flex items-center justify-center gap-4 text-xs font-bold text-zinc-600">
               <a
-                href={`https://wa.me/2349137421838?text=Hello%20Preshword,%20I%20have%20a%20question%20about%20${encodeURIComponent(product.name)}`}
+                href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hello%20Preshword,%20I%20have%20a%20question%20about%20${encodeURIComponent(product.name)}`}
                 target="_blank"
                 rel="noreferrer"
                 className="hover:text-[#25D366] flex items-center gap-1 transition-colors"
