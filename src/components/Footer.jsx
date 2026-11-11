@@ -41,13 +41,13 @@ export default function Footer({ onSelectCategory }) {
           </div>
 
           <div className="flex items-start gap-3.5">
-            <div className="w-10 h-10 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center text-[#E04F16] shrink-0">
-              <RefreshCw className="w-5 h-5" />
+            <div className="w-10 h-10 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center text-[#25D366] shrink-0">
+              <MessageCircle className="w-5 h-5" />
             </div>
             <div>
-              <h5 className="font-extrabold text-sm text-white">Pay On Delivery (Lagos)</h5>
+              <h5 className="font-extrabold text-sm text-white">Direct WhatsApp Ordering</h5>
               <p className="text-xs text-zinc-400 mt-1 leading-relaxed">
-                Inspect your items first at your doorstep, then pay via bank transfer or cash.
+                Connect directly with our sales desk on WhatsApp for instant confirmation, live photos & dispatch.
               </p>
             </div>
           </div>
@@ -80,7 +80,7 @@ export default function Footer({ onSelectCategory }) {
             <p className="mt-3 text-sm text-zinc-400 max-w-sm leading-relaxed">
               Curated kitchen wares, small home appliances, luxury dining flatware, and safe children tableware for modern Nigerian households.
             </p>
-            
+
             <div className="mt-6 flex flex-wrap items-center gap-3">
               <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/10 text-white font-mono text-xs">
                 <span className="w-2 h-2 rounded-full bg-[#25D366] animate-ping" />
@@ -174,7 +174,7 @@ export default function Footer({ onSelectCategory }) {
               </li>
               <li>
                 <a href={whatsappInquiryUrl} target="_blank" rel="noreferrer" className="hover:text-white transition-colors">
-                  Pay On Delivery Terms
+                  WhatsApp Ordering & Delivery Guide
                 </a>
               </li>
               <li>

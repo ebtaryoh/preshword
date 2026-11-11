@@ -120,11 +120,10 @@ export default function CommunityFeed({ onExplore }) {
                     e.stopPropagation();
                     toggleLike(post.id, post.likes);
                   }}
-                  className={`p-2 rounded-full backdrop-blur-md transition-all active:scale-90 cursor-pointer ${
-                    isLiked
+                  className={`p-2 rounded-full backdrop-blur-md transition-all active:scale-90 cursor-pointer ${isLiked
                       ? 'bg-rose-500 text-white'
                       : 'bg-black/40 text-white hover:bg-white hover:text-rose-500'
-                  }`}
+                    }`}
                   aria-label="Like post"
                 >
                   <Heart className={`w-3.5 h-3.5 ${isLiked ? 'fill-current' : ''}`} />

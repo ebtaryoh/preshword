@@ -9,7 +9,8 @@ export default function ProductModal({
   onClose,
   isWished,
   onToggleWishlist,
-  onAddToCart
+  onAddToCart,
+  cartQty = 0
 }) {
   const [selectedImg, setSelectedImg] = useState(product?.image);
   const [qty, setQty] = useState(1);
@@ -86,8 +87,8 @@ export default function ProductModal({
           <button
             onClick={() => onToggleWishlist(product.id)}
             className={`w-9 h-9 rounded-full flex items-center justify-center transition-all cursor-pointer ${isWished
-                ? 'bg-[#E04F16] text-white shadow-2xs'
-                : 'bg-[#F5F3EF] text-zinc-500 hover:text-[#141312]'
+              ? 'bg-[#E04F16] text-white shadow-2xs'
+              : 'bg-[#F5F3EF] text-zinc-500 hover:text-[#141312]'
               }`}
           >
             <Heart className={`w-4 h-4 ${isWished ? 'fill-current' : ''}`} />
@@ -118,13 +119,23 @@ export default function ProductModal({
                   key={idx}
                   onClick={() => setSelectedImg(img)}
                   className={`w-14 h-14 rounded-xl overflow-hidden shrink-0 border-2 transition-all cursor-pointer ${selectedImg === img
-                      ? 'border-[#E04F16] scale-95 shadow-sm'
-                      : 'border-transparent opacity-60 hover:opacity-100'
+                    ? 'border-[#E04F16] scale-95 shadow-sm'
+                    : 'border-transparent opacity-60 hover:opacity-100'
                     }`}
                 >
                   <img src={img} alt="" className="w-full h-full object-cover" />
                 </button>
               ))}
+            </div>
+          )}
+
+          {/* In-Bag Reassurance Banner */}
+          {cartQty > 0 && (
+            <div className="mb-3 px-3 py-2 rounded-xl bg-emerald-50 border border-emerald-500/20 text-emerald-800 text-xs font-semibold flex items-center gap-2">
+              <Check className="w-4 h-4 text-emerald-600 stroke-[3] shrink-0" />
+              <span>
+                You currently have <b>{cartQty}</b> of this item in your shopping bag.
+              </span>
             </div>
           )}
 
@@ -186,8 +197,8 @@ export default function ProductModal({
             <button
               onClick={handleAdd}
               className={`w-full py-3 px-6 rounded-2xl font-bold text-xs uppercase tracking-wider transition-all border border-[#E8E6E1] flex items-center justify-center gap-2 cursor-pointer ${added
-                  ? 'bg-emerald-600 text-white border-transparent'
-                  : 'bg-white hover:bg-[#F5F3EF] text-[#141312]'
+                ? 'bg-emerald-600 text-white border-transparent'
+                : 'bg-white hover:bg-[#F5F3EF] text-[#141312]'
                 }`}
             >
               {added ? (

@@ -7,6 +7,7 @@ export default function ProductGrid({
   activeCategory,
   onSelectCategory,
   wishlist,
+  cart = [],
   onToggleWishlist,
   onAddToCart,
   onQuickView
@@ -200,16 +201,20 @@ export default function ProductGrid({
       ) : (
         /* The Responsive Product Grid */
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3.5 sm:gap-6">
-          {filteredProducts.map((product) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-              isWished={wishlist.includes(product.id)}
-              onToggleWishlist={onToggleWishlist}
-              onAddToCart={onAddToCart}
-              onQuickView={onQuickView}
-            />
-          ))}
+          {filteredProducts.map((product) => {
+            const inCart = cart.find((c) => c.id === product.id);
+            return (
+              <ProductCard
+                key={product.id}
+                product={product}
+                isWished={wishlist.includes(product.id)}
+                onToggleWishlist={onToggleWishlist}
+                onAddToCart={onAddToCart}
+                onQuickView={onQuickView}
+                cartQty={inCart ? inCart.qty : 0}
+              />
+            );
+          })}
         </div>
       )}
     </section>

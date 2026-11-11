@@ -5,7 +5,7 @@ const messages = [
   { text: "USE CODE 'PRESHWORLD15' FOR 15% OFF YOUR FIRST ORDER", code: "PRESHWORLD15" },
   { text: "SAME-DAY LAGOS DISPATCH • 2-YEAR WARRANTY ON ALL ITEMS", code: null },
   { text: "100% NON-TOXIC SOL-GEL MINERAL CERAMIC // ZERO PTFE", code: null },
-  { text: "PAY ON DELIVERY AVAILABLE ACROSS LAGOS STATE", code: null }
+  { text: "ORDER DIRECT VIA WHATSAPP // INSTANT LAGOS HUB DISPATCH", code: null }
 ];
 
 export default function AnnouncementBar({ onOpenPromo, showToast }) {

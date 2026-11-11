@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sparkles, ShieldCheck, Flame, Zap, Check, Utensils, Smile, Truck, CreditCard } from 'lucide-react';
+import { Sparkles, ShieldCheck, Flame, Zap, Check, Utensils, Smile, Truck, MessageCircle } from 'lucide-react';
 
 const marqueeItems = [
   { text: "KITCHEN WARES & SOL-GEL COOKWARE", icon: Utensils, highlight: true, tag: "Flagship" },
@@ -7,7 +7,7 @@ const marqueeItems = [
   { text: "24PC LUXURY DINING CUTLERY", icon: Sparkles, highlight: false, tag: "18/10 Steel" },
   { text: "BPA-FREE CHILDREN WARES", icon: Smile, highlight: true, tag: "Kids Wares" },
   { text: "SAME-DAY LAGOS HUB DISPATCH", icon: Truck, highlight: false, tag: "Express 2-4h" },
-  { text: "PAY ON DELIVERY (LAGOS & ABUJA)", icon: CreditCard, highlight: false, tag: "Zero Risk" },
+  { text: "DIRECT WHATSAPP ORDERING", icon: MessageCircle, highlight: true, tag: "Instant" },
   { text: "100% NON-TOXIC & 2-YEAR WARRANTY", icon: ShieldCheck, highlight: true, tag: "Guaranteed" }
 ];
 

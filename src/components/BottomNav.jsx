@@ -56,20 +56,24 @@ export default function BottomNav({
           <span className="text-[10px] font-bold tracking-tight">Catalog</span>
         </button>
 
-        {/* 4. Cart */}
+        {/* 4. Bag */}
         <button
           onClick={onOpenCart}
-          className="relative flex flex-col items-center justify-center gap-1 text-zinc-500 hover:text-[#E04F16] transition-colors cursor-pointer"
+          className={`relative flex flex-col items-center justify-center gap-1 transition-colors cursor-pointer ${
+            cartCount > 0 ? 'text-[#E04F16]' : 'text-zinc-500 hover:text-[#141312]'
+          }`}
         >
           <div className="relative">
             <ShoppingCart className="w-5 h-5 stroke-[2.2]" />
             {cartCount > 0 && (
-              <span className="absolute -top-1.5 -right-2 min-w-4 h-4 px-1 rounded-full bg-[#E04F16] text-white text-[9px] font-black flex items-center justify-center leading-none animate-scale-in">
+              <span className="absolute -top-1.5 -right-2 min-w-4 h-4 px-1 rounded-full bg-[#E04F16] text-white text-[9px] font-black flex items-center justify-center leading-none animate-scale-in shadow-xs">
                 {cartCount}
               </span>
             )}
           </div>
-          <span className="text-[10px] font-bold tracking-tight">Cart</span>
+          <span className="text-[10px] font-bold tracking-tight">
+            Bag{cartCount > 0 ? ` (${cartCount})` : ''}
+          </span>
         </button>
 
         {/* 5. Wishlist */}

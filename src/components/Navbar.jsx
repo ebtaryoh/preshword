@@ -82,8 +82,8 @@ export default function Navbar({
     <>
       <header
         className={`sticky top-0 z-40 transition-all duration-300 ${isScrolled
-            ? 'bg-[#FBF9F5]/95 backdrop-blur-2xl border-b border-[#E8E6E1] shadow-xs py-2.5'
-            : 'bg-[#FBF9F5]/85 backdrop-blur-md border-b border-[#E8E6E1]/60 py-3.5 sm:py-4'
+          ? 'bg-[#FBF9F5]/95 backdrop-blur-2xl border-b border-[#E8E6E1] shadow-xs py-2.5'
+          : 'bg-[#FBF9F5]/85 backdrop-blur-md border-b border-[#E8E6E1]/60 py-3.5 sm:py-4'
           }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -130,8 +130,8 @@ export default function Navbar({
                       key={cat.id}
                       onClick={() => handleCategoryClick(cat.id)}
                       className={`relative px-3.5 py-1.5 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer flex items-center gap-1.5 ${isSelected
-                          ? 'bg-white text-[#141312] shadow-xs'
-                          : 'text-zinc-600 hover:text-[#141312] hover:bg-white/50'
+                        ? 'bg-white text-[#141312] shadow-xs'
+                        : 'text-zinc-600 hover:text-[#141312] hover:bg-white/50'
                         }`}
                     >
                       <span>{cat.label}</span>
@@ -278,8 +278,8 @@ export default function Navbar({
                         key={cat.id}
                         onClick={() => handleCategoryClick(cat.id)}
                         className={`w-full flex items-center justify-between px-3 py-2.5 rounded-2xl text-xs font-bold transition-all text-left cursor-pointer ${isSelected
-                            ? 'bg-[#141312] text-white shadow-xs'
-                            : 'hover:bg-[#F5F3EF] text-zinc-700'
+                          ? 'bg-[#141312] text-white shadow-xs'
+                          : 'hover:bg-[#F5F3EF] text-zinc-700'
                           }`}
                       >
                         <div className="flex items-center gap-2">
@@ -290,8 +290,8 @@ export default function Navbar({
                         </div>
                         <span
                           className={`font-mono text-[10px] px-2 py-0.5 rounded-full ${isSelected
-                              ? 'bg-white/20 text-white'
-                              : 'bg-zinc-100 text-zinc-500'
+                            ? 'bg-white/20 text-white'
+                            : 'bg-zinc-100 text-zinc-500'
                             }`}
                         >
                           {cat.count}
@@ -324,7 +324,7 @@ export default function Navbar({
                 </div>
                 <div className="flex items-center gap-1.5 font-bold text-[#141312]">
                   <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-                  <span>Pay On Delivery Available</span>
+                  <span>Instant WhatsApp Order Confirmation</span>
                 </div>
               </div>
             </div>

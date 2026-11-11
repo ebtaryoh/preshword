@@ -16,7 +16,7 @@ export default function CheckoutModal({
   const [phone, setPhone] = useState('');
   const [address, setAddress] = useState('');
   const [state, setState] = useState('Lagos');
-  const [paymentMethod, setPaymentMethod] = useState('Pay on Delivery (Lagos)');
+  const [paymentMethod, setPaymentMethod] = useState('Direct Bank Transfer');
   const [confirmedOrder, setConfirmedOrder] = useState(null);
   const [copied, setCopied] = useState(false);
 
@@ -189,36 +189,20 @@ export default function CheckoutModal({
                 />
               </div>
 
-              {/* Payment Preference */}
-              <div>
-                <label className="block text-[11px] font-mono font-bold uppercase text-zinc-500 mb-1.5">
-                  How do you prefer to pay?
-                </label>
-                <div className="grid grid-cols-2 gap-2">
-                  <label
-                    onClick={() => setPaymentMethod('Pay on Delivery (Lagos)')}
-                    className={`p-2.5 rounded-xl border text-xs font-bold flex items-center gap-2 cursor-pointer transition-all ${
-                      paymentMethod.includes('Delivery')
-                        ? 'bg-[#25D366]/10 border-[#25D366] text-[#141312]'
-                        : 'border-[#E8E6E1] text-zinc-600 hover:bg-zinc-50'
-                    }`}
-                  >
-                    <Banknote className="w-4 h-4 text-[#25D366]" />
-                    <span>Pay on Delivery</span>
-                  </label>
-
-                  <label
-                    onClick={() => setPaymentMethod('Bank Transfer')}
-                    className={`p-2.5 rounded-xl border text-xs font-bold flex items-center gap-2 cursor-pointer transition-all ${
-                      paymentMethod.includes('Transfer')
-                        ? 'bg-[#25D366]/10 border-[#25D366] text-[#141312]'
-                        : 'border-[#E8E6E1] text-zinc-600 hover:bg-zinc-50'
-                    }`}
-                  >
-                    <Building2 className="w-4 h-4 text-[#25D366]" />
-                    <span>Bank Transfer</span>
-                  </label>
+              {/* Payment Method Notice */}
+              <div className="p-3.5 rounded-2xl bg-[#F0FDF4] border border-emerald-500/20">
+                <div className="flex items-center gap-2 mb-1">
+                  <Building2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <span className="font-extrabold text-xs text-[#141312]">
+                    Payment: Direct Bank Transfer
+                  </span>
+                  <span className="ml-auto px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 text-[9px] font-mono font-bold uppercase">
+                    Via WhatsApp
+                  </span>
                 </div>
+                <p className="text-[11px] text-zinc-600 leading-snug">
+                  Our sales team will confirm item availability and send our verified bank transfer details directly in the WhatsApp chat.
+                </p>
               </div>
             </div>
 

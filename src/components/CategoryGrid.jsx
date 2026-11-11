@@ -113,11 +113,10 @@ export default function CategoryGrid({ onSelectCategory, activeCategory }) {
             <div
               key={dept.id}
               onClick={() => handleCardClick(dept.id)}
-              className={`group relative rounded-3xl p-4 sm:p-5 bg-white border cursor-pointer transition-all duration-300 flex flex-col justify-between overflow-hidden shadow-2xs hover:shadow-xl hover:-translate-y-1 ${
-                isSelected
+              className={`group relative rounded-3xl p-4 sm:p-5 bg-white border cursor-pointer transition-all duration-300 flex flex-col justify-between overflow-hidden shadow-2xs hover:shadow-xl hover:-translate-y-1 ${isSelected
                   ? 'border-[#E04F16] ring-2 ring-[#E04F16]/25 shadow-md'
                   : 'border-[#E8E6E1] hover:border-zinc-400'
-              }`}
+                }`}
             >
               <div>
                 {/* Full-Bleed Visual Image Container */}
@@ -211,20 +210,20 @@ export default function CategoryGrid({ onSelectCategory, activeCategory }) {
           </div>
         </div>
 
-        {/* Tile 2: Pay on Delivery */}
+        {/* Tile 2: Direct WhatsApp Ordering */}
         <div className="p-4 rounded-2xl bg-white border border-[#E8E6E1] shadow-2xs hover:shadow-sm hover:border-zinc-300 transition-all flex items-start gap-3.5">
           <div className="w-11 h-11 rounded-2xl bg-[#F0FDF4] text-emerald-600 flex items-center justify-center shrink-0 border border-emerald-500/15">
-            <RotateCcw className="w-5 h-5" />
+            <MessageCircle className="w-5 h-5" />
           </div>
           <div>
             <div className="flex items-center gap-1.5 mb-0.5">
-              <span className="font-extrabold text-sm text-[#141312]">Pay On Delivery</span>
-              <span className="px-1.5 py-0.2 rounded bg-blue-100 text-blue-800 text-[9px] font-mono font-bold uppercase">
-                Zero Risk
+              <span className="font-extrabold text-sm text-[#141312]">Direct WhatsApp Order</span>
+              <span className="px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-800 text-[9px] font-mono font-bold uppercase">
+                Instant
               </span>
             </div>
             <p className="text-xs text-zinc-500 leading-snug">
-              Inspect your items upon arrival, then pay cash or bank transfer.
+              Order directly to our WhatsApp concierge with instant verification & prompt dispatch.
             </p>
           </div>
         </div>

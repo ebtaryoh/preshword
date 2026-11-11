@@ -17,6 +17,7 @@ import Toast from './components/Toast';
 import LiveSalesNotification from './components/LiveSalesNotification';
 import BottomNav from './components/BottomNav';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
+import FloatingCartBar from './components/FloatingCartBar';
 
 export default function App() {
   // Local storage state
@@ -61,6 +62,30 @@ export default function App() {
       localStorage.setItem('preshworld_wishlist_v2', JSON.stringify(wishlist));
     } catch { }
   }, [wishlist]);
+
+  // Deep-link handler: when clicking an item link from WhatsApp (e.g. #item-5)
+  useEffect(() => {
+    const handleDeepLink = () => {
+      const hash = window.location.hash;
+      if (hash && hash.startsWith('#item-')) {
+        const id = parseInt(hash.replace('#item-', ''), 10);
+        if (!isNaN(id)) {
+          const product = products.find((p) => p.id === id);
+          if (product) {
+            setQuickViewProduct(product);
+            setTimeout(() => {
+              const el = document.getElementById(`item-${id}`);
+              if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 350);
+          }
+        }
+      }
+    };
+
+    handleDeepLink();
+    window.addEventListener('hashchange', handleDeepLink);
+    return () => window.removeEventListener('hashchange', handleDeepLink);
+  }, []);
 
   // Toast helper
   const showToast = (msg) => {
@@ -191,6 +216,7 @@ export default function App() {
           activeCategory={activeCategory}
           onSelectCategory={setActiveCategory}
           wishlist={wishlist}
+          cart={cart}
           onToggleWishlist={handleToggleWishlist}
           onAddToCart={handleAddToCart}
           onQuickView={(p) => setQuickViewProduct(p)}
@@ -243,6 +269,7 @@ export default function App() {
           isWished={wishlist.includes(quickViewProduct.id)}
           onToggleWishlist={handleToggleWishlist}
           onAddToCart={handleAddToCart}
+          cartQty={cart.find((c) => c.id === quickViewProduct.id)?.qty || 0}
         />
       )}
 
@@ -256,8 +283,19 @@ export default function App() {
         onClearCart={handleClearCart}
       />
 
+      {/* Floating Shopping Bag Bar (Persistent Cart Visibility) */}
+      <FloatingCartBar
+        cartCount={cartCount}
+        cartTotal={cartTotal}
+        onOpenCart={() => setCartOpen(true)}
+        isVisible={!cartOpen && !checkoutOpen}
+      />
+
       {/* Floating Micro-Notifications & WhatsApp Concierge */}
-      <Toast message={toastMessage} />
+      <Toast
+        toast={toastMessage}
+        onOpenCart={() => setCartOpen(true)}
+      />
       <LiveSalesNotification
         onQuickView={(p) => setQuickViewProduct(p)}
       />

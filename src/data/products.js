@@ -545,7 +545,7 @@ export const heroHighlights = [
   { label: "100% Non-Toxic", sub: "PTFE, PFOA & BPA Free" },
   { label: "Lagos Same-Day", sub: "Nationwide in 48h" },
   { label: "4.9/5 Rating", sub: "From 3,400+ Nigerian Homes" },
-  { label: "Pay on Delivery", sub: "Lagos & Abuja Hubs" }
+  { label: "Order on WhatsApp", sub: "Direct Dispatch & Support" }
 ];
 
 export const reviews = [

@@ -9,7 +9,8 @@ export default function ProductCard({
   isWished,
   onToggleWishlist,
   onAddToCart,
-  onQuickView
+  onQuickView,
+  cartQty = 0
 }) {
   const [justAdded, setJustAdded] = useState(false);
   const [hovered, setHovered] = useState(false);
@@ -29,7 +30,7 @@ export default function ProductCard({
         particleCount: 16,
         spread: 40,
         origin: { x, y },
-        colors: ['#E04F16', '#141312', '#FFFFFF']
+        colors: ['#E04F16', '#25D366', '#141312']
       });
     } catch { }
 
@@ -44,10 +45,11 @@ export default function ProductCard({
 
   return (
     <div
+      id={`item-${product.id}`}
       onClick={() => onQuickView(product)}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="group relative flex flex-col justify-between bg-white rounded-3xl p-3 sm:p-4 border border-[#E8E6E1] hover:border-zinc-400 shadow-2xs hover:shadow-md transition-all duration-300 cursor-pointer app-card"
+      className="group relative flex flex-col justify-between bg-white rounded-3xl p-3 sm:p-4 border border-[#E8E6E1] hover:border-zinc-400 shadow-2xs hover:shadow-md transition-all duration-300 cursor-pointer app-card scroll-mt-28"
     >
       <div>
         {/* Product Image Container */}
@@ -72,6 +74,14 @@ export default function ProductCard({
               </span>
             )}
           </div>
+
+          {/* Persistent In-Bag Indicator */}
+          {cartQty > 0 && (
+            <div className="absolute bottom-2 left-2 z-10 inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-600/95 backdrop-blur-md text-white font-mono font-black text-[10px] tracking-wider shadow-md animate-scale-in">
+              <Check className="w-3 h-3 stroke-[3]" />
+              <span>{cartQty} IN BAG</span>
+            </div>
+          )}
 
           {/* Wishlist Heart Button */}
           <button
@@ -136,12 +146,15 @@ export default function ProductCard({
           {/* Add to Cart Plus Button */}
           <button
             onClick={handleAdd}
-            className={`w-9 h-9 rounded-full flex items-center justify-center transition-all active:scale-90 cursor-pointer shadow-sm shrink-0 ${justAdded
-                ? 'bg-emerald-600 text-white'
+            className={`w-9 h-9 rounded-full flex items-center justify-center transition-all active:scale-90 cursor-pointer shadow-sm shrink-0 ${
+              justAdded
+                ? 'bg-emerald-600 text-white scale-105'
+                : cartQty > 0
+                ? 'bg-emerald-600 hover:bg-emerald-700 text-white ring-2 ring-emerald-500/30'
                 : 'bg-[#141312] hover:bg-[#E04F16] text-white'
-              }`}
+            }`}
             aria-label={`Add ${product.name} to cart`}
-            title="Add to cart"
+            title={cartQty > 0 ? `In bag (${cartQty}). Tap to add another.` : "Add to bag"}
           >
             {justAdded ? (
               <Check className="w-4 h-4 stroke-[3] animate-scale-in" />

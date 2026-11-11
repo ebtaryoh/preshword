@@ -68,7 +68,7 @@ export default function CartDrawer({
       customerName: 'Customer',
       phone: '',
       address: '',
-      paymentMethod: 'Pay on Delivery (Lagos)'
+      paymentMethod: 'Direct Bank Transfer'
     });
     window.open(whatsappUrl, '_blank');
   };
